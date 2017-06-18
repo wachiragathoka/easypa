@@ -1,0 +1,454 @@
+@CHARSET "ISO-8859-1";
+
+html, body {
+	margin: 0;
+	padding: 0;
+	height: 100%
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	font-family: 'Century Gothic', 'CenturyGothicPro', Helvetica, Arial,
+		sans-serif;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	/*text-align: center;*/
+	float: left;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+	border: 0;
+	overflow: hidden;
+}
+
+tr:hover {
+	background-color: #ffa;
+}
+
+td, th {
+	position: relative;
+}
+
+td:hover::after, th:hover::after {
+	content: "";
+	position: absolute;
+	background-color: #ffa;
+	left: 0;
+	top: -5000px;
+	height: 10000px;
+	width: 100%;
+	z-index: -1;
+}
+
+/**Benefits Values****/
+.benefit-values, th, td {
+	/*border: 1px solid black;*/
+	border-collapse: collapse;
+	font-size: small;
+	padding: 10px;
+	/*font-weight: bold;*/
+}
+
+/*fieldset { /*img*
+	border: 1;
+	margin: 20px;
+	width: 400px;
+	padding: 0 10px 10px;
+	border: 1px solid #666;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	box-shadow: 0 0 10px #666;
+	padding-top: 10px;
+}*/
+
+address, caption, cite, code, dfn, th, var {
+	font-style: normal;
+	font-weight: normal;
+}
+
+ol, ul {
+	list-style: none;
+}
+
+caption, th {
+	text-align: left;
+}
+
+.th-titles {
+	text-align: center;
+	background-color: #baefc0;
+	font-weight: bold;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-size: 100%;
+	font-weight: normal;
+}
+
+q:before, q:after {
+	content: '';
+}
+
+abbr, acronym {
+	border: 0;
+}
+
+section, header {
+	display: block;
+}
+
+img {
+	border: none;
+}
+
+.clearfloat {
+	zoom: 1;
+}
+
+.clearfloat:before, .clearfloat:after {
+	content: "";
+	display: table;
+}
+
+.clearfloat:after {
+	clear: both;
+}
+
+td {
+	padding: 3px;
+}
+
+/*label {
+	font-weight: bold;
+	display: block;
+	float: left;
+	font-size: 14px;
+}
+
+input[type="text"] {
+	width: 230px;
+	border: 1px solid #CCC;
+	font-size: 16px;
+	height: 25px;
+	padding-left: 5px;
+	moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-khtml-border-radius: 5px;
+	font-weight: normal;
+}*/
+
+label:after {
+	content: ":"
+}
+
+/* CSS reset */
+.wrapper {
+	width: 100%;
+	margin: 0 auto;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	height: 100%
+}
+
+.expand {
+	width: 100%
+}
+
+.center_align {
+	margin: 0 auto;
+	width: 90%;
+	background-color: #f6f6f6;
+}
+
+.product_hover {
+	
+}
+
+.top {
+	background: #379321;
+	height: 15px;
+	width: 100%
+}
+
+.top2 {
+	width: 100%;
+	padding-top: 10px;
+	padding-bottom: 5px;
+	background: #e5e2e2;
+	position: relative;
+	height: auto;
+}
+
+.footer {
+	background: #d21241;
+	padding: 20px 0;
+	text-align: center;
+	width: 100%;
+	color: #fff;
+	font-size: 12px;
+	float: left;
+}
+
+/* custom form fielsds */
+.customerdetails {
+	float: left;
+	top: 0; /* at the top */
+	moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	-khtml-border-radius: 10px; /* for old Konqueror browsers */
+	-webkit-border-radius: 10px;
+	-khtml-border-radius: 10px;
+}
+
+.riskItemDetails {
+	top: 0; /* at the top */
+	moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	-khtml-border-radius: 10px; /* for old Konqueror browsers */
+}
+
+.benefits {
+	top: 0; /* at the top */
+	moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	-khtml-border-radius: 10px; /* for old Konqueror browsers */
+}
+
+.limits {
+	top: 0; /* at the top */
+	moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	-khtml-border-radius: 10px; /* for old Konqueror browsers */
+}
+
+.submitbtn {
+	background-color: #4CAF50; /* Green */
+	border: none;
+	color: white;
+	padding: 15px 32px;
+	text-align: center;
+	text-decoration: none;
+	font-weight: bold;
+	display: inline-block;
+	font-size: 16px;
+}
+
+.resetBTN {
+	border: none;
+	color: white;
+	padding: 15px 32px;
+	text-align: center;
+	text-decoration: none;
+	font-weight: bold;
+	display: inline-block;
+	font-size: 16px;
+}
+
+.quote-section-header {
+	border-top-style: solid;
+	border-bottom-style: solid;
+	border-width: 1px;
+	padding: 5px;
+	text-align: center;
+	font-weight: bold;
+	font-size: 16px;
+}
+
+.quote-subheader {
+	background-color: #F5F5F5;
+	font-weight: bold;
+}
+
+.double_underline {
+	border-bottom: 3px double;
+}
+
+.single-underline {
+	border-bottom: 1px solid;
+}
+
+.taglabelsfont {
+	font-size: 14px;
+	font-weight: bold;
+}
+
+.clausestable {
+	padding: 15px;
+	text-align: left;
+	overflow-x: auto;
+}
+
+.clausestable, td, th {
+	border-bottom: 1px solid #ddd;
+}
+
+.clausestable odd {
+	background-color: #f5f5f5
+}
+
+/*error */
+error {
+	
+}
+
+/**************RADIO/CHECK BOX ****************/
+.example {
+	margin-bottom: 1.5em;
+}
+
+input[type=checkbox]:not(old), input[type=radio]:not(old) {
+	width: 2em;
+	margin: 0;
+	padding: 0;
+	font-size: 1em;
+	opacity: 0;
+}
+
+input[type=checkbox]:not(old)+label, input[type=radio]:not(old)+label {
+	display: inline-block;
+	margin-left: -2em;
+	line-height: 1.5em;
+}
+
+input[type=checkbox]:not(old)+label>span, input[type=radio]:not(old)+label>span
+	{
+	display: inline-block;
+	width: 0.875em;
+	height: 0.875em;
+	margin: 0.25em 0.5em 0.25em 0.25em;
+	border: 0.0625em solid rgb(192, 192, 192);
+	border-radius: 0.25em;
+	background: rgb(224, 224, 224);
+	background-image: -moz-linear-gradient(rgb(240, 240, 240),
+		rgb(224, 224, 224));
+	background-image: -ms-linear-gradient(rgb(240, 240, 240),
+		rgb(224, 224, 224));
+	background-image: -o-linear-gradient(rgb(240, 240, 240),
+		rgb(224, 224, 224));
+	background-image: -webkit-linear-gradient(rgb(240, 240, 240),
+		rgb(224, 224, 224));
+	background-image: linear-gradient(rgb(240, 240, 240), rgb(224, 224, 224));
+	vertical-align: bottom;
+}
+
+input[type=checkbox]:not(old):checked+label>span, input[type=radio]:not(old):checked+label>span
+	{
+	background-image: -moz-linear-gradient(rgb(224, 224, 224),
+		rgb(240, 240, 240));
+	background-image: -ms-linear-gradient(rgb(224, 224, 224),
+		rgb(240, 240, 240));
+	background-image: -o-linear-gradient(rgb(224, 224, 224),
+		rgb(240, 240, 240));
+	background-image: -webkit-linear-gradient(rgb(224, 224, 224),
+		rgb(240, 240, 240));
+	background-image: linear-gradient(rgb(224, 224, 224), rgb(240, 240, 240));
+}
+
+input[type=checkbox]:not(old):checked+label>span:before {
+	content: '✓';
+	display: block;
+	width: 1 em;
+	color: rgb(153, 204, 102);
+	font-size: 0.875em;
+	line-height: 1em;
+	text-align: center;
+	text-shadow: 0 0 0.0714em rgb(115, 153, 77);
+	font-weight: bold;
+}
+
+input[type=radio]:not(old):checked+label>span>span {
+	display: block;
+	width: 0.5em;
+	height: 0.5em;
+	margin: 0.125em;
+	border: 0.0625em solid rgb(115, 153, 77);
+	border-radius: 0.125em;
+	background: rgb(153, 204, 102);
+	background-image: -moz-linear-gradient(rgb(179, 217, 140),
+		rgb(153, 204, 102));
+	background-image: -ms-linear-gradient(rgb(179, 217, 140),
+		rgb(153, 204, 102));
+	background-image: -o-linear-gradient(rgb(179, 217, 140),
+		rgb(153, 204, 102));
+	background-image: -webkit-linear-gradient(rgb(179, 217, 140),
+		rgb(153, 204, 102));
+	background-image: linear-gradient(rgb(179, 217, 140), rgb(153, 204, 102));
+}
+
+/************Modal Window **************************/
+.modalDialog {
+    position: fixed;
+    font-family: Arial, Helvetica, sans-serif;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 99999;
+    opacity:0;
+    -webkit-transition: opacity 400ms ease-in;
+    -moz-transition: opacity 400ms ease-in;
+    transition: opacity 400ms ease-in;
+    pointer-events: none;
+}
+.modalDialog:target {
+    opacity:1;
+    pointer-events: auto;
+}
+.modalDialog > div {
+    width: auto;
+    position: relative;
+    margin: 10% auto;
+    padding: 5px 20px 13px 20px;
+    border-radius: 10px;
+    background: #fff;
+    background: -moz-linear-gradient(#fff, #999);
+    background: -webkit-linear-gradient(#fff, #999);
+    background: -o-linear-gradient(#fff, #999);
+}
+.close {
+    background: #606061;
+    color: #FFFFFF;
+    line-height: 25px;
+    position: absolute;
+    right: -12px;
+    text-align: center;
+    top: -10px;
+    width: 24px;
+    text-decoration: none;
+    font-weight: bold;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    border-radius: 12px;
+    -moz-box-shadow: 1px 1px 3px #000;
+    -webkit-box-shadow: 1px 1px 3px #000;
+    box-shadow: 1px 1px 3px #000;
+}
+.close:hover {
+    background: #00d9ff;
+}
+
+/******Show hide divs controls ************/
+.hidden {
+	display: none;
+}
+
+.visible {
+	display: block;
+}
+
+/****Benefits for cover options ***/
+.student-internship-cover-table {
+	
+	}
+	
+.pa-cover-table{
+	
+}
+}
