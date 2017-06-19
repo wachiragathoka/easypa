@@ -11,7 +11,7 @@ if (isset ( $_POST ['Submit'] ) && $_POST ['Submit'] == "Get Quote") {
 	$cust_id_no = filter_var ( $_POST ['idpass'], FILTER_SANITIZE_STRING );
 	$cust_kra_pin = filter_var ( $_POST ['krapin'], FILTER_SANITIZE_STRING );
 	$cust_phone_no = filter_var ( $_POST ['conf_phone'], FILTER_SANITIZE_STRING );
-	$cust_dob = filter_var ( $_POST ['dob'], FILTER_SANITIZE_STRING );
+	$cust_dob = filter_var ( $_POST ['custdob'], FILTER_SANITIZE_STRING );
 	$cust_postaladdress = filter_var ( $_POST ['postaladdress'], FILTER_SANITIZE_STRING );
 	$cust_postalCode = filter_var ( $_POST ['postalcode'], FILTER_SANITIZE_STRING );
 	$nok_name = filter_var ( $_POST ['nok'], FILTER_SANITIZE_STRING );
@@ -29,4 +29,3 @@ echo "success";
 	
 	echo "failed";
 }
-

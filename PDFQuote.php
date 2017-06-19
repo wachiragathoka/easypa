@@ -1,8 +1,9 @@
 <?php
+include 'config/config.php';
 //include_once '../../library/quotePDFFactory.php';
 require 'lib/fpdf/fpdf.php';
 require 'lib/fpdf/gradients.php';
-//include_once '../../application/app/coverDetail.php';
+include_once 'data/model.php';
 class PDF extends FPDF
 {
 	// Load data
@@ -292,7 +293,8 @@ $pdf->horizontalLine(10, 37, 200, 37);
 $pdf->subHeadingCell("CLIENT DETAILS",10,39);
 
 //Customer Data
-$customerData=array("Mathew Gathoka Wachira","19/01/1980","24003658","A57949667P","5300","00100","0722896425","mgathoka@uap-group.com","Peter Gathoka","Father","07229876654","PMburu@gmail.com");
+$datasource=new Model();
+$customerData=$datasource->getCustomerdata($_SESSION['sessionID']);
 $customerDatasubheading=array("Name","Date Of Birth","ID Number", "KRA PIN","P.O. Box","Postal Code","Phone Number","Email","Next of Kin","Relationship","Phone Number","Email");
 $pdf->tableData($customerDatasubheading,$customerData,10,48);
 
@@ -301,7 +303,7 @@ $pdf->subHeadingCell("COVER DETAILS",10,92);
 //Cover Details
 
 $CoverSubheading=array("Cover Amount (KES)","Cover Option:","Cover Start on:", "Cover ends on:");
-$coverdetails=array("3000","PLAN E","6-July-2017","5-July-2017");
+$coverdetails=$datasource->getPolicyDetails($_SESSION['sessionID']);
 $pdf->tableData($CoverSubheading,$coverdetails,10,99);
 
 //Cover Plan benefits
@@ -315,7 +317,7 @@ $selectedCoverbenefitsTitles=array(
 				"Artificial Appliance",
 				"Last Expense(Accidental Death)");
 
-$selectedCoverbenefits=array("Amounts(KES)",100000,20000,10000,30000,2000,50000,200);
+$selectedCoverbenefits=$datasource->getSelectedCoverBenefits($_SESSION['sessionID']);
 //$selectedCoverbenefits=$pdffactory->getCoverBenefits("A");
 $pdf->benefistTableData($selectedCoverbenefitsTitles,$selectedCoverbenefits,10,120);
 

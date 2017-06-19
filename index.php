@@ -1,3 +1,6 @@
+<?php 
+include 'config/config.php';
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -65,7 +68,7 @@
 						 <label class="col-lg-4 control-label">Date of Birth (dd/mm/yy)*</label>
 						 	<div class="col-lg-4 date">
 						 		<div class="input-group input-append date" id="datePicker">
-						 			<input type="text" class="form-control" name="date" />
+						 			<input type="text" class="form-control" name="custdob1" id="custdob1" />
                 					<span class="input-group-addon add-on"><span class="glyphicon glyphicon-calendar"></span></span>
 						 		</div>
 						 	</div>					
@@ -85,9 +88,7 @@
 							Number</label>
 						<div class="col-xs-5">
 							<!-- <input type="password" class="form-control" id="conf_password" name="conf_password" placeholder="e.g. +254722000000"> -->
-							<input type="text" class="form-control bfh-phone"
-								data-format="+254 (dd) dddddd" name="conf_phone"
-								placeholder="e.g. +254722000000">
+							<input type="text" class="form-control bfh-phone" data-format="+254 (dd) dddddd" name="conf_phone" id="conf_phone" placeholder="e.g. +254722000000" >
 
 						</div>
 					</div>
@@ -570,7 +571,7 @@
 
 					<!-- Modal content-->
 					<div class="modal-content">
-						<div class="modal-header">
+						<div class="modal-header w3-teal">
 							<h5 class="modal-title" id="exampleModalLabel">Personal Accident Cover Details</h5>
 							<button type="button" class="close" data-dismiss="modal"
 								aria-label="Close">
@@ -664,45 +665,39 @@
 							usernameRegex: true,
 							minlength: 3,
 						},
-						password : {
+						datePicker: {
+							required: true,
+							
+						},
+						email: {
+							required: true,
+							minlength: 3,
+						},
+						conf_phone:{
 							required: true,
 						},
-						conf_password : {
-							required: true,
-							equalTo: '#password',
-						},
-						company:{
-							required: true,
-						},
+						
 						url:{
 							required: true,
 						},
 						name: {
 							required: true,
 							minlength: 3,
-						},
-						email: {
-							required: true,
-							minlength: 3,
-						},
+						},	
 						
 					},
 					messages: {
-						username: {
-							required: "Username required",
+						fname: {
+							required: "First name required",
 						},
-						password : {
-							required: "Password required",
-						},
-						conf_password : {
-							required: "Password required",
-							equalTo: "Password don't match",
-						},
-						name: {
-							required: "Name required",
+						datePicker: {
+							required: "We would need this to give you a more accurate quote",
 						},
 						email: {
-							required: "Email required",
+							required: "Email is required",
+						},
+						conf_phone: {
+							required: "Phone Number required",
 						},
 					},
 

@@ -101,9 +101,23 @@ class Model{
 				//Insert
 				$clientstmt->execute();
 				
-				//get inserterdID
-				
+				//get inserterdID				
 				$this->disconnectDB();
 				
+	}
+	
+	function getCustomerdata($sessionID){
+		$customerdata="";
+		
+		
+		return array("Mathew Gathoka Wachira","19/01/1980","24003658","A57949667P","5300","00100","0722896425","mgathoka@uap-group.com","Peter Gathoka","Father","07229876654","PMburu@gmail.com");
+	}
+	
+	function getPolicyDetails($sessionID){
+		return array("3000","PLAN E","6-July-2017","5-July-2017");
+	}
+	
+	function getSelectedCoverBenefits($sessionID){
+		return array("Amounts(KES)",100000,20000,10000,30000,2000,50000,200);
 	}
 }
