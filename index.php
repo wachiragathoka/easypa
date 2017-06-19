@@ -256,9 +256,27 @@
 								</tbody>
 							</table>
 			</div>
-							<!-- table end -->
+							<!-- personal accident table end -->
 							
 					<div class="student-internship-cover-table" id="student-internship-cover-table">
+					
+					<!-- <div class="form-group">
+						<label for="" class="col-lg-4 control-label">Annual or Semi Annual?</label> 
+						<div class="col-lg-5">-->
+						
+						<!-- <input id="annual" type="radio" name="annualSemiaAnnual" value="annual"><label for="annual"><span><span>Annual</span></span></label><br>
+								<input id="semiannual" type="radio" name="annualSemiaAnnual" value="semiannual"><label for="semiannual"><span><span>Semi Annual</span></span></label> -->
+							<div class="col-lg-8">
+							<select class="form-control" id=annualSemiaAnnual name="annualSemiaAnnual">
+								<option selected>Choose One...</option>
+								<option value="annual">Annual Cover</option>
+								<option value="semiannual">Semi Annual Cover</option>
+							</select> 
+						 </div>
+						 <br>
+					<!-- </div> -->
+					
+					
 						<table class="table table-bordered">
 								<thead class="thead-default">
 									<tr>
@@ -875,24 +893,49 @@
 				}else{}
 
 			}else if(selected=="Student Personal Accident Cover"){
-				if(selectedOption=="A"){
-					premiumAmount=500;
-				}else if(selectedOption=="B"){
-					premiumAmount=600;
-				}else if(selectedOption=="C"){
-					premiumAmount=750;
-				}else if(selectedOption=="D"){
-					premiumAmount=1000;
-				}else{}
+
+				var s_selectedOption=$('input[name=s_coverOption]:checked').val();				
+				var studentAnnualSemiannual=$('#annualSemiaAnnual').val();
+				
+				if(studentAnnualSemiannual=="annual"){
+					if(s_selectedOption=="A"){
+						premiumAmount=1000;
+					}else if(s_selectedOption=="B"){
+						premiumAmount=1200;
+					}else if(s_selectedOption=="C"){
+						premiumAmount=1500;
+					}else if(s_selectedOption=="D"){
+						premiumAmount=2000;
+					}else{}
+
+				}else if(studentAnnualSemiannual=="semiannual"){
+					if(s_selectedOption=="A"){
+						premiumAmount=500;
+					}else if(s_selectedOption=="B"){
+						premiumAmount=600;
+					}else if(s_selectedOption=="C"){
+						premiumAmount=750;
+					}else if(s_selectedOption=="D"){
+						premiumAmount=1000;
+					}else{}
+
+				}else{
+					premiumAmount="Please select a Cover";
+				}
+				
 
 			}else{
-				premiumAmount="Please select a Cover";
+
 			}
 			
 			$("#exampleModalLabel").html(selected);
-			$("#premium-amount").html(premiumAmount);
+			$("#premium-amount").html("<b>"+formatedNumber(premiumAmount)+"</b>");
 			$("#Start-date").html( strtdate );
 			$("#end-date").html(enddte);
+		}
+
+		function formatedNumber(value){
+			return 'KES '+value.toFixed(2);
 		}
 			
 	   
