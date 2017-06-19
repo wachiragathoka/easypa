@@ -158,7 +158,7 @@
 								</thead>
 								<tbody>
 									<tr>
-										<td width="20%" scope="row">1. Accidental Death</td>
+										<td width="420%" scope="row">1. Accidental Death</td>
 										<td align="right" class="align-right">750,000</td>
 										<td align="right" class="align-right">1,000,000</td>
 										<td align="right" class="align-right">2,000,000</td>
@@ -168,7 +168,7 @@
 										<td align="right" class="align-right">10,000,000</td>
 									</tr>
 									<tr>
-										<td width="20%">2. Accidental Permanent Total Disablement
+										<td width="40%">2. Accidental Permanent Total Disablement
 											(Continental Scale Benefts)</td>
 										<td align="right" class="align-right">750,000</td>
 										<td align="right" class="align-right">1,000,000</td>
@@ -179,7 +179,7 @@
 										<td align="right" class="align-right">10,000,000</td>
 									</tr>
 									<tr>
-										<td width="20%">3. Hospital Cash</td>
+										<td width="40%">3. Hospital Cash</td>
 										<td align="right" class="align-right">2,000</td>
 										<td align="right" class="align-right">2,500</td>
 										<td align="right" class="align-right">5,000</td>
@@ -189,7 +189,7 @@
 										<td align="right" class="align-right">20,000</td>
 									</tr>
 									<tr>
-										<td width="20%">4. Accidental Temporary , Total Disablement,
+										<td width="40%">4. Accidental Temporary , Total Disablement,
 											(Loss of Income) per week maximum 104 weeks</td>
 										<td align="right" class="align-right">3,500</td>
 										<td align="right" class="align-right">5,000</td>
@@ -200,7 +200,7 @@
 										<td align="right" class="align-right">30,000</td>
 									</tr>
 									<tr>
-										<td width="20%">5. Accidental Medical Expense</td>
+										<td width="40%">5. Accidental Medical Expense</td>
 										<td align="right" class="align-right">75,000</td>
 										<td align="right" class="align-right">100,000</td>
 										<td align="right" class="align-right">200,000</td>
@@ -210,7 +210,7 @@
 										<td align="right" class="align-right">500,000</td>
 									</tr>
 									<tr>
-										<td width="20%">6. Artifcial Appliance (Accidental Loss)</td>
+										<td width="40%">6. Artifcial Appliance (Accidental Loss)</td>
 										<td align="right" class="align-right">10,000</td>
 										<td align="right" class="align-right">20,000</td>
 										<td align="right" class="align-right">25,000</td>
@@ -220,7 +220,7 @@
 										<td align="right" class="align-right">50,000</td>
 									</tr>
 									<tr>
-										<td width="20%">7. Last Expense (Accidental Death)</td>
+										<td width="40%">7. Last Expense (Accidental Death)</td>
 										<td align="right" class="align-right">10,000</td>
 										<td align="right" class="align-right">15,000</td>
 										<td align="right" class="align-right">25,000</td>
@@ -272,27 +272,41 @@
 								</thead>
 								<tbody>
 									<tr>
-										<td width="20%" scope="row">1. Accidental Death</td>
+										<td width="40%" scope="row">1. Accidental Death</td>
 										<td align="right" class="align-right">200,000</td>
 										<td align="right" class="align-right">250,000</td>
 										<td align="right" class="align-right">300,000</td>
 										<td align="right" class="align-right">400,000</td>										
 									</tr>
 									<tr>
-										<td width="20%" scope="row">2. Accidental disablement</td>
+										<td width="40%" scope="row">2. Accidental disablement</td>
 										<td align="right" class="align-right">200,000</td>
 										<td align="right" class="align-right">250,000</td>
 										<td align="right" class="align-right">300,000</td>
 										<td align="right" class="align-right">400,000</td>										
 									</tr>
 									<tr>
-										<td width="20%" scope="row">3. Accidental medical reimbursement</td>
+										<td width="40%" scope="row">3. Accidental medical reimbursement</td>
 										<td align="right" class="align-right">20,000</td>
 										<td align="right" class="align-right">25,000</td>
 										<td align="right" class="align-right">30,000</td>
 										<td align="right" class="align-right">40,000</td>										
 									</tr>
-									
+									<tr>
+										<td height="30px" align="center"></td>
+										<td height="30px" align="center"><input id="s_A" type="radio"
+											name="s_coverOption" value="A"><label for="s_A"><span><span></span></span>
+										</label></td>
+										<td height="30px" align="center"><input id="s_B" type="radio"
+											name="s_coverOption" value="B"><label for="s_B"><span><span></span></span>
+										</label></td>
+										<td height="30px" align="center"><input id="s_C" type="radio"
+											name="s_coverOption" value="C"><label for="s_C"><span><span></span></span>
+										</label></td>
+										<td height="30px" align="center"><input id="s_D" type="radio"
+											name="s_coverOption" value="D"><label for="s_D"><span><span></span></span>
+										</label></td>
+										</tr>
 									</tbody>
 									</table>					
 					</div>
@@ -302,18 +316,23 @@
 
 					<!-- Dates -->
 					<div class="form-group">
-
-						<label for="url" class="col-lg-4 control-label">Start and end date</label>
+						<label for="url" class="col-lg-4 control-label">Cover Start date</label>
 						<div class="col-lg-4">
 							<div class="form-group">
-								<div class='input-group date' id='datetimepicker6'>
+							
+								<div class="input-group input-append date" id="datetimepicker6">
 									<input type='text' class="form-control" name="startdate" id="startdate" /> <span
-										class="input-group-addon"> <span
+										class="input-group-addon add-on"> <span
 										class="glyphicon glyphicon-calendar"></span>
 									</span>
 								</div>
+								
 							</div>
 						</div>
+						</div>
+						
+						<div class="form-group">
+						<label for="url" class="col-lg-4 control-label">Cover End Date</label>
 						<div class="col-lg-4">
 							<div class="form-group">
 								<div class='input-group date' id='datetimepicker7'>
@@ -417,20 +436,19 @@
 					
 					
 						<label for="dob" class="col-lg-4 control-label">Date of Birth</label>
-						<div class="col-md-6">
-						<div class='input-group date'>
-							<input type='text' class="form-control" name="dob"  id='dob'/> <span
-								class="input-group-addon"> <span
-								class="glyphicon glyphicon-calendar"></span>
-							</span>
+						<div class="col-lg-4">
+						<div class='input-group input-append date' id='dob'>
+							<input type='text' class="form-control" name="custdob"  /> 
+							<span class="input-group-addon add-on"> <span	class="glyphicon glyphicon-calendar"></span></span>							
 						</div>
+						
 						</div>
 					</div>
 					
 					<!-- Postal Address -->
 					<div class="form-group">
 						<label for="postaladdress" class="col-lg-4 control-label">Postal Address</label>
-						<div class='col-lg-8'>
+						<div class='col-lg-5'>
 							<input type='text' class="form-control" name="postaladdress" id="postaladdress" placeholder="Postal Address"/>
 						</div>
 					</div>
@@ -438,7 +456,7 @@
 					<!-- postal code -->
 					<div class="form-group">
 						<label for="postalcode" class="col-lg-4 control-label">Postal Code</label>
-						<div class='col-xs-3'>
+						<div class='col-lg-3'>
 							<input type='text' class="form-control" name="postalcode" id="postalcode" placeholder="Postal Code"/>
 						</div>
 					</div>
@@ -705,6 +723,38 @@
 		            //$('#eventForm').formValidation('revalidateField', 'date');
 		        });
 
+
+			 $('#datetimepicker6')
+		        .datepicker({
+		        	autoclose: true,    // It is false, by default
+		            format: 'dd/mm/yyyy'
+		        })
+		        .on('changeDate', function(e) {
+		            // Revalidate the date field
+		            //$('#eventForm').formValidation('revalidateField', 'date');
+		        });
+
+			 $('#datetimepicker7')
+		        .datepicker({
+		        	autoclose: true,    // It is false, by default
+		            format: 'dd/mm/yyyy'
+		        })
+		        .on('changeDate', function(e) {
+		            // Revalidate the date field
+		            //$('#eventForm').formValidation('revalidateField', 'date');
+		        });
+
+			 $('#dob')
+		        .datepicker({
+		        	autoclose: true,    // It is false, by default
+		            format: 'dd/mm/yyyy'
+		        })
+		        .on('changeDate', function(e) {
+		            // Revalidate the date field
+		            //$('#eventForm').formValidation('revalidateField', 'date');
+		        });
+			 
+			 
 			$('#previous').click(function(){
 				if($('#company_information').is(":visible")){
 					current_fs = $('#company_information');
@@ -752,16 +802,16 @@
 			/*
 			 * Date Validation
 			 */
-			$('#datetimepicker6').datetimepicker();
-	        $('#datetimepicker7').datetimepicker({
-	            useCurrent: false //Important! See issue #1075
-	        });
-	        $("#datetimepicker6").on("dp.change", function (e) {
-	            $('#datetimepicker7').data("DateTimePicker").minDate(e.date);
-	        });
-	        $("#datetimepicker7").on("dp.change", function (e) {
-	            $('#datetimepicker6').data("DateTimePicker").maxDate(e.date);
-	        });
+			//$('#datetimepicker6').datetimepicker();
+	        //$('#datetimepicker7').datetimepicker({
+	           // useCurrent: false //Important! See issue #1075
+	       // });
+	       // $("#datetimepicker6").on("dp.change", function (e) {
+	           // $('#datetimepicker7').data("DateTimePicker").minDate(e.date);
+	       // });
+	       // $("#datetimepicker7").on("dp.change", function (e) {
+	            //$('#datetimepicker6').data("DateTimePicker").maxDate(e.date);
+	        //});
 	        //end date validation
 
 			 $('#student-internship-cover-table').hide();
