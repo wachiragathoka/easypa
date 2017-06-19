@@ -550,6 +550,9 @@
 						
 						<!-- Generate a Quote preview -->
 						
+						
+						<!-- End quote -->
+						
 							<p>
 								<a class="btn btn-success">Print and Email my quote</a> <a class="btn btn-primary next">Print my Quote Only</a> <a class="btn btn-info next">Email My Quote Only</a>
 							</p>
@@ -710,10 +713,23 @@
 			                data : $('#myform').serialize(),
 			                success : function (data) {
 			                    alert(data);
+			                   // if(data=="sucess"){
+									current_fs = $('#account_information');
+									next_fs = $('#company_information');
+									print_fs=$('#print-email-quote');
+
+									next_fs.hide();
+									current_fs.hide();
+									print_fs.show();	
+			                    //}else{
+									//alert(data);
+			                   // }
 			                }
 			            });
 					  }
 				});
+
+				
 				if (form.valid() === true){
 					if ($('#account_information').is(":visible")){
 						current_fs = $('#account_information');
@@ -725,7 +741,7 @@
 						print_fs=$('#print-email-quote');
 					}
 					
-					next_fs.show(); 
+					next_fs.show();
 					current_fs.hide();
 					print_fs.hide();
 				}
