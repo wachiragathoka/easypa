@@ -1,6 +1,7 @@
 $(document).ready(function(){
 	
 			var customerDOB="";
+			var todaydate= new Date();
 
 			// Custom method to validate username
 			$.validator.addMethod("usernameRegex", function(value, element) {
@@ -149,9 +150,15 @@ $(document).ready(function(){
 		        .on('changeDate', function(e) {
 		            // Revalidate the date field
 		            //$('#myform').formValidation('revalidateField', 'custdob1');
-		        	//alert($('#custdob1').val());
-		        	//alert(computeAge($('#custdob1').val()));
-		        	customerDOB=$('#custdob1').val();
+		        	
+		        	//console.log(computeAge($('#custdob1').val()));
+		        	//customerDOB=$('#custdob1').val();
+		        	if(computeAge($('#custdob1').val())<1){
+		        		console.log("Less "+computeAge($('#custdob1').val()))
+		        	}else{
+		        		console.log("Ok"+computeAge($('#custdob1').val()))
+		        	}
+		
 		        });
 
 
