@@ -95,18 +95,20 @@ $(document).ready(function(){
 			                url : "controller/pa.php",
 			                data : $('#myform').serialize(),
 			                success : function (data) {
-			                    alert(data);
-			                   // if(data=="sucess"){
+			                    //alert(data);
+			                    if(data=="success"){//success
 									current_fs = $('#account_information');
 									next_fs = $('#company_information');
 									print_fs=$('#print-email-quote');
 
 									next_fs.hide();
 									current_fs.hide();
-									print_fs.show();	
-			                    //}else{
-									//alert(data);
-			                   // }
+									print_fs.show();
+									$('#declarations').hide();
+									
+			                    }else{
+									alert(data);
+			                    }
 			                }
 			            });
 					  }
@@ -130,6 +132,7 @@ $(document).ready(function(){
 						current_fs = $('#account_information');
 						next_fs = $('#company_information');
 						print_fs=$('#print-email-quote');
+						
 					}else if($('#company_information').is(":visible")){
 						current_fs = $('#company_information');
 						next_fs = $('#personal_information');
@@ -139,6 +142,7 @@ $(document).ready(function(){
 					next_fs.show();
 					current_fs.hide();
 					print_fs.hide();
+					$('#declarations').hide();
 				}
 			});
 
@@ -199,14 +203,17 @@ $(document).ready(function(){
 					current_fs = $('#company_information');
 					next_fs = $('#account_information');
 					print_fs=$('#print-email-quote');
+					declarations=('#declarations');
 				}else if ($('#personal_information').is(":visible")){
 					current_fs = $('#personal_information');
 					next_fs = $('#company_information');
 					print_fs=$('#print-email-quote');
+					declarations=$('#declarations');
 				}
 				next_fs.show(); 
 				current_fs.hide();
 				print_fs.hide();
+				declarations.hide();
 			});
 
 			$('#stage2').click(function(){
@@ -220,6 +227,7 @@ $(document).ready(function(){
 				next_fs.show(); 
 				current_fs.hide();
 				print_fs.hide();
+				$('#declarations').hide();
 			});
 
 			$('#preview-quote').click(function(){
@@ -236,15 +244,56 @@ $(document).ready(function(){
 				next_fs.hide(); 
 				current_fs.show();
 				print_fs.hide();
+				$('#declarations').hide();
 			});
-
 			
 			
+			//account information - Step 1
+			//company information - step 2
+			//personal_information- step 3
+			
+			$('#ok-quote').click(function(){
+				//alert("Clicked");
+				if($('#company_information').is(":visible")){ //step 2
+					current_fs = $('#company_information');
+					next_fs = $('#personal_information');
+				}else if ($('#personal_information').is(":visible")){
+					current_fs = $('#personal_information');
+					next_fs = $('#company_information'); /*Change to print**/
+				}
 
-			 $('#student-internship-cover-table').hide();
-			 $('#pa-cover-table').show();
-			 
-			 
+				//myModalData();
+				next_fs.show(); 
+				current_fs.hide();
+				print_fs.hide();
+				$('#declarations').hide();
+			});
+			
+			$('#to-declarations').click(function(){
+				
+				if($('#personal_information').is(":visible")){ 
+					$('#declarations').show();
+					$('#personal_information').hide();					
+					$('#print-email-quote').hide();
+					$('#company_information').hide();
+				
+				}
+			});
+			
+			$('#to-personal-info').click(function(){
+				
+				if($('#declarations').is(":visible")){ 
+					$('#declarations').hide();
+					$('#personal_information').show();					
+					$('#print-email-quote').hide();
+					$('#company_information').hide();				
+				}
+			});
+			
+			$('#declarations').hide();			
+			$('#student-internship-cover-table').hide();
+			//$('#pa-cover-table').hide();
+		 
 			 //http://formvalidation.io/examples/bootstrap-datepicker/
 			 
 			/* $('#myform').formValidation({
@@ -334,6 +383,12 @@ $(document).ready(function(){
 			
 			//alert("1 ");
 			
+			console.log(selected);
+			console.log(strtdate);
+			console.log(enddte);
+			console.log(selectedOption);
+			
+			
 			if(selected=="Personal Accident Cover" ){//&& customerAge()=="normal"
 				
 				customerAge();
@@ -412,6 +467,7 @@ $(document).ready(function(){
 			
 			$("#exampleModalLabel").html(selected);
 			$("#premium-amount").html("<b>"+formatedNumber(premiumAmount)+"</b>");
+			$("#premiumamount").val(premiumAmount);
 			$("#Start-date").html( strtdate );
 			$("#end-date").html(enddte);
 		}
@@ -426,7 +482,10 @@ $(document).ready(function(){
 		function customerAge() {
 			//alert ("tt"+customerDOB);//customerDOB
 			
-			console.log(customerDOB);
+			//
+			
+			
+			console.log("customerAge()");
 			//if(customerDOB>=18 && customerDOB<=50){
 				//alert ("normal");
 				//return "normal";
@@ -434,7 +493,7 @@ $(document).ready(function(){
 				//return "advanced";
 				//alert ("advanced");
 			//}else{
-				//alert ("Fuck you");
+				//alert ("");
 			//}
 		}
 		

@@ -534,17 +534,97 @@ include 'config/config.php';
 						<div class="col-lg-8">
 							<p>
 								<a class="btn btn-info" id="previous">Previous</a>					
-								<input class="btn btn-success" type="submit" name="Submit" value="Get Quote">
+								<input class="btn btn-success" type="button" value="A few Questions Abaout you" id="to-declarations">
 							</p>
 
 						</div>
 					</div>
 				</fieldset>
 
-			</form>
 			
+			
+
+				<!-- Step 4 -->
+				<!-- declarations -->				
+				<fieldset id="declarations" class="">
+					<legend>Declarations</legend>					
+					<div class="form-group">
+					<label for=" " class="col-lg-4 control-label">Declarations</label>
+						<div class="col-lg-8">
+							<!-- declarations table -->
+							
+							<table>
+								<thead>
+									<tr>
+										<th><b>Question</b></th>
+										<th><b>Tick where applicable</b></th>
+									</tr>
+								</thead>
+								
+								<tbody>
+									<tr>
+										<td>1(a) Have you previously held Personal Accident cover?</td>
+										<td></td>
+									</tr>
+									<tr>
+										<td>1(b) If yes above , name the insurer:</td>
+										<td></td>
+									</tr>
+									<tr>
+										<td>2(a) Are you free from any physical disability or mental illness to the best of your knowledge ?</td>
+										<td></td>
+									</tr>
+									<tr>
+										<td>2(b) If No above, give details:</td>
+										<td></td>
+									</tr>
+									<tr>
+										<td>3 Give details of all accidents you have sustained in the last five (5) years :</td>
+										<td></td>
+									</tr>
+									<tr>
+										<td>4(a) Are you engaged in any of the  excluded activities / occupations ? *</td>
+										<td></td>
+									</tr>
+									<tr>
+										<td>4(b) If Yes, would you like an extension of cover to these activities ?*</td>
+										<td></td>
+									</tr>
+								</tbody>
+							</table>
+							
+						</div>
+					
+					</div>
+					
+					<!-- Final Declaration -->
+						<div class="form-group">
+						<label for=" " class="col-lg-4 control-label">Final Declaration</label>
+						<div class="col-lg-8">
+						
+						<table>
+							<tbody>
+								<tr>
+									<td>I warrant that the above statements made by me or on my behalf are true and complete to the best of my knowledge and belief and I agree that this proposal shall be the basis
+of the contract between me and the company. I also declare that no insurer has ever declined, refused to renew, terminated my insurance, increased my insurance premium or
+imposed special terms.<br><br>
+I agree to accept a policy in the company’s usual form for this class of insurance <input type="checkbox" name="" id=""></td>
+								</tr>
+							</tbody>
+						</table>
+						<input type="hidden" name="premiumamount" value="" id="premiumamount">
+						<p>
+							<a class="btn btn-primary" id="to-personal-info">previous</a> <input class="btn btn-success" name="Submit" type="submit" value="Get My Quote">
+						</p>
+
+						</div>
+					</div>
+				
+				</fieldset>
+				
+			</form>	
 			<!-- Print and Email -->
-			<!-- Step 4 -->
+			<!-- Step 5 -->
 			<fieldset id="print-email-quote" class="">
 					<legend>Hurray, You quote is ready.</legend>
 					
@@ -559,13 +639,14 @@ include 'config/config.php';
 						<!-- End quote -->
 						
 							<p>
-								<a class="btn btn-success">Print and Email my quote</a> <a class="btn btn-primary next">Print my Quote Only</a> <a class="btn btn-info next">Email My Quote Only</a>
+								<!-- <a class="btn btn-success">Print and Email my quote</a>  --><a class="btn btn-primary next" href="./PDFQuote.php">Print my Quote</a> <a class="btn btn-info">Email My Quote</a>
 							</p>
 
 						</div>
 					</div>
 
 				</fieldset>
+				
 
 			<!-- Modal -->
 			<!-- Modal -->
@@ -630,9 +711,8 @@ include 'config/config.php';
 							</p> -->
 						</div>
 						<div class="modal-footer">
-							<button type="button" class="btn btn-danger"
-								data-dismiss="modal">Modify Quote</button>
-							<button type="button" class="btn btn-success">Ok Proceed</button>
+							<button type="button" class="btn btn-danger" data-dismiss="modal">Modify Quote</button>
+							 <button type="button" class="btn btn-primary" id="ok-quote" data-dismiss="modal">Ok Proceed</button> <!--  <a class="btn btn-primary" id="ok-quote">Ok Proceed</a> -->
 						</div>
 					</div>
 

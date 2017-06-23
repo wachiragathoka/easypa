@@ -43,6 +43,8 @@ class Model{
 			$param_nok_email,
 			$param_cover_option_pa_std,
 			$param_cover_option,
+			$param_cover_premium,
+			$param_s_annualSemiaAnnual,
 			$param_cover_startdate,
 			$param_cover_enddate){
 				
@@ -53,8 +55,8 @@ class Model{
 				// prepare sql and bind parameters
 				$clientstmt = $this->conn->prepare(
 						"INSERT INTO easy_pa (user_id,cust_firstname, cust_second_name, cust_last_name,	cust_email, cust_id_no, cust_kra_pin,cust_phone_no, cust_dob, cust_postaladdress,
-		cust_postalCode, nok_name, nok_relationship, nok_phone_no,nok_email,cover_option_pa_std,cover_option,cover_startdate,cover_enddate)
-    VALUES (:user_id, :cust_firstname, :cust_second_name, :cust_last_name, :cust_email, :cust_id_no, :cust_kra_pin, :cust_phone_no, :cust_dob, :cust_postaladdress, :cust_postalCode, :nok_name, :nok_relationship, :nok_phone_no, :nok_email, :cover_option_pa_std, :cover_option, :cover_startdate, :cover_enddate)");
+		cust_postalCode, nok_name, nok_relationship, nok_phone_no,nok_email,cover_option_pa_std,cover_option,cover_premium,s_annualSemiaAnnual,cover_startdate,cover_enddate)
+    VALUES (:user_id, :cust_firstname, :cust_second_name, :cust_last_name, :cust_email, :cust_id_no, :cust_kra_pin, :cust_phone_no, :cust_dob, :cust_postaladdress, :cust_postalCode, :nok_name, :nok_relationship, :nok_phone_no, :nok_email, :cover_option_pa_std, :cover_option, :cover_premium, :s_annualSemiaAnnual, :cover_startdate, :cover_enddate)");
 				
 				
 
@@ -75,6 +77,8 @@ class Model{
 				$clientstmt->bindParam(':nok_email', $nok_email);
 				$clientstmt->bindParam(':cover_option_pa_std', $cover_option_pa_std);
 				$clientstmt->bindParam(':cover_option', $cover_option);
+				$clientstmt->bindParam(':cover_premium', $cover_premium);
+				$clientstmt->bindParam(':s_annualSemiaAnnual', $s_annualSemiaAnnual);
 				$clientstmt->bindParam(':cover_startdate', $cover_startdate);
 				$clientstmt->bindParam(':cover_enddate', $cover_enddate);
 				
@@ -95,6 +99,8 @@ class Model{
 				$nok_email=$param_nok_email;
 				$cover_option_pa_std=$param_cover_option_pa_std;
 				$cover_option=$param_cover_option;
+				$cover_premium=$param_cover_premium;
+				$s_annualSemiaAnnual=$param_s_annualSemiaAnnual;
 				$cover_startdate=$param_cover_startdate;
 				$cover_enddate=$param_cover_enddate;
 				
@@ -119,5 +125,57 @@ class Model{
 	
 	function getSelectedCoverBenefits($sessionID){
 		return array("Amounts(KES)",100000,20000,10000,30000,2000,50000,200);
+	}
+	
+	
+	/**
+	 * 
+	 * @return string
+	 */
+	function declationsInfo(){
+		$declarationDetails="";
+		$declarationQuestions=array(
+				"1(a) Have you previously held Personal Accident cover ?",
+				"1(b) If yes above , name the insurer:",
+				"2(a) Are you free from any physical disability or mental illness to the best of your knowledge ?",
+				"2(b) If No above, give details:",
+				"3 Give details of all accidents you have sustained in the last five (5) years :",
+				"4(a) Are you engaged in any of the  excluded activities / occupations ? *",
+				"5(b) If Yes, would you like an extension of cover to these activities ?*",
+		);
+		
+		$paramOptions=array(
+				"Yes",
+				"No"
+		);
+		
+		$selectCoverBefore=new SelectField("", "CoverBefore","CoverBefore","CoverBefore",$paramOptions);
+		$nameofInsurer=new FormField("nameofinsurer","nameofinsurer", " ", "nameofinsurer");
+		$diabilityKnowledge=new SelectField("", "diabilityKnowledge","diabilityKnowledge","diabilityKnowledge",$paramOptions);
+		$diabilityDetails=new FormField("diabilityDetails","diabilityDetails", " ", "diabilityDetails");
+		$allAccidentsIn5years= new FormField("allAccidentsIn5years","allAccidentsIn5years", " ", "allAccidentsIn5years");
+		$excludedActivities=new SelectField("", "excludedActivities","excludedActivities","excludedActivities",$paramOptions);
+		$activitiesExtenstionOfCover=new FormField("activitiesExtenstionOfCover","activitiesExtenstionOfCover", " ", "activitiesExtenstionOfCover");
+		
+		
+		$declarationAnswers=array(
+				$selectCoverBefore->getSelectField(),
+				$nameofInsurer->getField(),
+				$diabilityKnowledge->getSelectField(),
+				$diabilityDetails->getField(),
+				$allAccidentsIn5years->getField(),
+				$excludedActivities->getSelectField(),
+				$activitiesExtenstionOfCover->getField()
+		);
+		
+		for($i=0;$i<count($declarationQuestions);$i++){
+			$declarationDetails=$declarationDetails.
+			$this->container->getTR ().//start row
+			$this->container->getTD1($declarationQuestions[$i]).
+			$this->container->getTD1($declarationAnswers[$i]).
+			$this->container->getTrEnd ();//end row
+		}
+		
+		return $declarationDetails;
 	}
 }

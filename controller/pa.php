@@ -2,7 +2,16 @@
 include '../data/model.php';
 $model = new Model ();
 
-if (isset ( $_POST ['Submit'] ) && $_POST ['Submit'] == "Get Quote") {
+if (isset ( $_POST ['Submit'] ) && $_POST ['Submit'] == "Get My Quote") {
+	
+	if(isset($_POST['coverOption_pa_stdnt']) && $_POST['coverOption_pa_stdnt']==2){
+		$s_annualSemiaAnnual=filter_var ($_POST['annualSemiaAnnual'], FILTER_SANITIZE_STRING); //return annual and semiannual
+		$cover_option=filter_var ($_POST ['s_coverOption'], FILTER_SANITIZE_STRING); // radio
+	
+	}else {
+		$cover_option = $_POST ['coverOption']; // radio
+		$s_annualSemiaAnnual="NAN";
+	}
 	$cust_firstname = filter_var ( $_POST ['fname'], FILTER_SANITIZE_STRING );
 	$cust_second_name = filter_var ( $_POST ['sname'], FILTER_SANITIZE_STRING );
 	$cust_last_name = filter_var ( $_POST ['lname'], FILTER_SANITIZE_STRING );
@@ -19,13 +28,15 @@ if (isset ( $_POST ['Submit'] ) && $_POST ['Submit'] == "Get Quote") {
 	$nok_phone_no = filter_var ( $_POST ['conf_nokphone'], FILTER_SANITIZE_STRING );
 	$nok_email = filter_var ( $_POST ['conf_nokemail'], FILTER_SANITIZE_EMAIL );	
 	$cover_option_pa_std = $_POST ['coverOption_pa_stdnt']; // select
-	$cover_option = $_POST ['coverOption']; // radio
-	$cover_startdate = $_POST ['startdate'];
-	$cover_enddate = $_POST ['enddate'];
+	//$cover_option = $_POST ['coverOption']; // radio
+	$cover_premium=filter_var ( $_POST['premiumamount'],FILTER_SANITIZE_STRING );
+	$cover_startdate = filter_var ( $_POST ['startdate'],FILTER_SANITIZE_STRING );
+	$cover_enddate = filter_var ( $_POST ['enddate'],FILTER_SANITIZE_STRING );
 	
-	$model->insertPolicydata ( $cust_firstname, $cust_second_name, $cust_last_name, $cust_email, $cust_id_no, $cust_kra_pin, $cust_phone_no, $cust_dob, $cust_postaladdress, $cust_postalCode, $nok_name, $nok_relationship, $nok_phone_no, $nok_email, $cover_option_pa_std, $cover_option, $cover_startdate, $cover_enddate );
+	$model->insertPolicydata ( $cust_firstname, $cust_second_name, $cust_last_name, $cust_email, $cust_id_no, $cust_kra_pin, $cust_phone_no, $cust_dob, $cust_postaladdress, $cust_postalCode, $nok_name, $nok_relationship, $nok_phone_no, $nok_email, $cover_option_pa_std, $cover_option, $cover_premium, $s_annualSemiaAnnual,$cover_startdate, $cover_enddate );
 echo "success";
+//header('location:..');
 }else{
 	
-	echo "failed";
+	echo "Not Submit";
 }
