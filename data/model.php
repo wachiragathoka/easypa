@@ -42,7 +42,15 @@ class Model{
 			$param_nok_phone_no,
 			$param_nok_email,
 			$param_cover_option_pa_std,
-			$param_cover_option,
+			$param_cover_option,			
+			$param_Previus_cover,
+			$param_Previus_cover_name,
+			$param_physical_disability,
+			$param_physical_disability_names,
+			$param_accidents_in_five_years,
+			$param_excluded_activities,
+			$param_excluded_activities_extension,
+			$param_final_declarations,			
 			$param_cover_premium,
 			$param_s_annualSemiaAnnual,
 			$param_cover_startdate,
@@ -54,9 +62,68 @@ class Model{
 				
 				// prepare sql and bind parameters
 				$clientstmt = $this->conn->prepare(
-						"INSERT INTO easy_pa (user_id,cust_firstname, cust_second_name, cust_last_name,	cust_email, cust_id_no, cust_kra_pin,cust_phone_no, cust_dob, cust_postaladdress,
-		cust_postalCode, nok_name, nok_relationship, nok_phone_no,nok_email,cover_option_pa_std,cover_option,cover_premium,s_annualSemiaAnnual,cover_startdate,cover_enddate)
-    VALUES (:user_id, :cust_firstname, :cust_second_name, :cust_last_name, :cust_email, :cust_id_no, :cust_kra_pin, :cust_phone_no, :cust_dob, :cust_postaladdress, :cust_postalCode, :nok_name, :nok_relationship, :nok_phone_no, :nok_email, :cover_option_pa_std, :cover_option, :cover_premium, :s_annualSemiaAnnual, :cover_startdate, :cover_enddate)");
+						"INSERT INTO easy_pa (
+										user_id,
+										cust_firstname, 
+										cust_second_name, 
+										cust_last_name,	
+										cust_email, 
+										cust_id_no, 
+										cust_kra_pin,
+										cust_phone_no, 
+										cust_dob, 
+										cust_postaladdress,
+										cust_postalCode, 
+										nok_name, 
+										nok_relationship, 
+										nok_phone_no,
+										nok_email,
+										cover_option_pa_std,
+										cover_option,
+										previus_cover,
+										previus_cover_name,
+										physical_disability,
+										physical_disability_names,
+										accidents_in_five_years,
+										excluded_activities,
+										excluded_activities_extension,
+										final_declarations,
+										cover_premium,
+										s_annualSemiaAnnual,
+										cover_startdate,
+										cover_enddate
+									)
+   	 						VALUES (
+								:user_id, 
+								:cust_firstname, 
+								:cust_second_name, 
+								:cust_last_name, 
+								:cust_email, 
+								:cust_id_no, 
+								:cust_kra_pin, 
+								:cust_phone_no, 
+								:cust_dob, 
+								:cust_postaladdress, 
+								:cust_postalCode, 
+								:nok_name, 
+								:nok_relationship, 
+								:nok_phone_no, 
+								:nok_email, 
+								:cover_option_pa_std, 
+								:cover_option,
+								:previus_cover,
+								:previus_cover_name,
+								:physical_disability,
+								:physical_disability_names,
+								:accidents_in_five_years,
+								:excluded_activities,
+								:excluded_activities_extension,
+								:final_declarations,
+								:cover_premium, 
+								:s_annualSemiaAnnual, 
+								:cover_startdate, 
+								:cover_enddate)"
+						);
 				
 				
 
@@ -77,12 +144,23 @@ class Model{
 				$clientstmt->bindParam(':nok_email', $nok_email);
 				$clientstmt->bindParam(':cover_option_pa_std', $cover_option_pa_std);
 				$clientstmt->bindParam(':cover_option', $cover_option);
+				
+				$clientstmt->bindParam(':previus_cover', $previus_cover);
+				$clientstmt->bindParam(':previus_cover_name', $previus_cover_name);
+				$clientstmt->bindParam(':physical_disability', $physical_disability);
+				$clientstmt->bindParam(':physical_disability_names', $physical_disability_names);
+				$clientstmt->bindParam(':accidents_in_five_years', $accidents_in_five_years);
+				$clientstmt->bindParam(':excluded_activities', $excluded_activities);
+				$clientstmt->bindParam(':excluded_activities_extension', $excluded_activities_extension);
+				$clientstmt->bindParam(':final_declarations', $final_declarations);
+				
 				$clientstmt->bindParam(':cover_premium', $cover_premium);
 				$clientstmt->bindParam(':s_annualSemiaAnnual', $s_annualSemiaAnnual);
 				$clientstmt->bindParam(':cover_startdate', $cover_startdate);
 				$clientstmt->bindParam(':cover_enddate', $cover_enddate);
 				
-				$user_id="Mathew";
+				
+				$user_id="Matthew";
 				$cust_firstname=$param_cust_firstname;
 				$cust_second_name=$param_cust_second_name;
 				$cust_last_name=$param_cust_last_name;
@@ -99,6 +177,16 @@ class Model{
 				$nok_email=$param_nok_email;
 				$cover_option_pa_std=$param_cover_option_pa_std;
 				$cover_option=$param_cover_option;
+				
+				$previus_cover=$param_Previus_cover;
+				$previus_cover_name=$param_Previus_cover_name;
+				$physical_disability=$param_physical_disability;
+				$physical_disability_names=$param_physical_disability_names;
+				$accidents_in_five_years=$param_accidents_in_five_years;
+				$excluded_activities=$param_excluded_activities;
+				$excluded_activities_extension=$param_excluded_activities_extension;
+				$final_declarations=$param_final_declarations;
+				
 				$cover_premium=$param_cover_premium;
 				$s_annualSemiaAnnual=$param_s_annualSemiaAnnual;
 				$cover_startdate=$param_cover_startdate;
