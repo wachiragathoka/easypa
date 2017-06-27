@@ -203,11 +203,40 @@ class Model{
 	function getCustomerdata($sessionID){
 		$customerdata="";
 		
+		$cust_querySTMT="SELECT 
+							'id', 
+							'user_id', 
+							'cust_firstname', 
+							'cust_second_name', 
+							'cust_last_name', 
+							'cust_email',
+							'cust_id_no', 
+							'cust_kra_pin', 
+							'cust_phone_no', 
+							'cust_dob', 
+							'cust_postaladdress', 
+							'cust_postalCode',
+							'nok_name', 
+							'nok_relationship', 
+							'nok_phone_no', 
+							'nok_email'
+						FROM 'easy_pa' 
+						WHERE user_id=".$sessionID;
 		
 		return array("Mathew Gathoka Wachira","19/01/1980","24003658","A57949667P","5300","00100","0722896425","mgathoka@uap-group.com","Peter Gathoka","Father","07229876654","PMburu@gmail.com");
 	}
 	
 	function getPolicyDetails($sessionID){
+		
+		$PolicyDetailsSTMT="SELECT 
+				 	'cover_premium',
+					'cover_option',
+					's_annualSemiaAnnual',
+					'cover_startdate',
+					'cover_enddate'
+";
+		
+		
 		return array("3000","PLAN E","6-July-2017","5-July-2017");
 	}
 	

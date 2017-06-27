@@ -1,3 +1,14 @@
+<script type="text/javascript" src="../assets/js/app.js"></script>
+<link rel="stylesheet"	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+<!-- Include Bootstrap Datepicker -->
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.min.css" />
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker3.min.css" />
+<link rel="stylesheet" type="text/css" href="../assets/css/style.css"> 
+
+
+
+
 <!-- declarations -->
 <div id="declarations">
 	<fieldset class="">
@@ -39,12 +50,12 @@
 						</tr>
 						<tr>
 							<td>2(b) If No above, give details:</td>
-							<td><textarea rows="3" cols="10" name="physical_disability_names"></textarea></td>
+							<td><textarea rows="3" cols="16" name="physical_disability_names"></textarea></td>
 						</tr>
 						<tr>
 							<td>3 Give details of all accidents you have sustained in the
 								last five (5) years :</td>
-							<td><textarea rows="3" cols="10" name="accidents_in_five_years"></textarea></td>
+							<td><textarea rows="3" cols="16" name="accidents_in_five_years"></textarea></td>
 						</tr>
 						<tr>
 							<td>4(a) Are you engaged in any of the excluded activities /
@@ -58,10 +69,10 @@
 						<tr>
 							<td>4(b) If Yes, would you like an extension of cover to these
 								activities ?*</td>
-							<td><select name="excluded_activities_extension">
+							<td><select name="excluded_activities_extension" id="excluded_activities_extension" class="excluded_activities_extension">
 									<option>Select One</option>
 									<option value="yes">Yes</option>
-									<option value="No">No</option>
+									<option value="no">No</option>
 							</select></td>
 						</tr>
 					</tbody>
@@ -89,16 +100,23 @@
 								insurer has ever declined, refused to renew, terminated my
 								insurance, increased my insurance premium or imposed special
 								terms.<br>
-							<br> I agree to accept a policy in the company’s usual form for
-								this class of insurance <input type="checkbox"
-								name="final_declarations" id="final_declarations">
+							 <br>
+								
+								<input type="radio" name="final_declarations" id="final_declarations" value="accepted"><label for="final_declarations"><span> <span><!-- (*)Please click here to accept --></span></span>
+										</label>I agree to accept a policy in the company&#39;s usual form for
+								this class of insurance
+								
+								
 							</td>
-						</tr>
+							
+							</tr>
+							
 					</tbody>
 				</table>
+				
 				<input type="hidden" name="premiumamount" value=""
 					id="premiumamount">
-				<p>
+				<p><br><br>
 					<a class="btn btn-primary" id="to-personal-info">previous</a> <input
 						class="btn btn-success" name="Submit" type="submit"
 						value="Get My Quote">

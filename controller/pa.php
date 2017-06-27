@@ -38,7 +38,7 @@ if (isset ( $_POST ['Submit'] ) && $_POST ['Submit'] == "Get My Quote") {
 	$accidents_in_five_years=filter_var($_POST['accidents_in_five_years'], FILTER_SANITIZE_STRING);
 	$excluded_activities=filter_var($_POST['excluded_activities'], FILTER_SANITIZE_STRING);
 	$excluded_activities_extension=filter_var($_POST['excluded_activities_extension'], FILTER_SANITIZE_STRING);
-	$final_declarations="yes";//$_POST['final_declarations'];
+	$final_declarations=$_POST['final_declarations'];
 	
 	//cover Amounts
 	$cover_premium=filter_var ( $_POST['premiumamount'],FILTER_SANITIZE_STRING );

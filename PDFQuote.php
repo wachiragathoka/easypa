@@ -295,7 +295,9 @@ $pdf->subHeadingCell("CLIENT DETAILS",10,39);
 //Customer Data
 $datasource=new Model();
 $customerData=$datasource->getCustomerdata($_SESSION['sessionID']);
+
 $customerDatasubheading=array("Name","Date Of Birth","ID Number", "KRA PIN","P.O. Box","Postal Code","Phone Number","Email","Next of Kin","Relationship","Phone Number","Email");
+
 $pdf->tableData($customerDatasubheading,$customerData,10,48);
 
 $pdf->subHeadingCell("COVER DETAILS",10,92);

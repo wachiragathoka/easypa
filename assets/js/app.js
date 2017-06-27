@@ -290,6 +290,11 @@ $(document).ready(function(){
 				}
 			});
 			
+			$( ".excluded_activities_extension" ).change(function() {
+				  alert( "Handler for .change() called." );
+				  console.log("HI");
+		});
+			
 			$('#declarations').hide();			
 			$('#student-internship-cover-table').hide();
 			//$('#pa-cover-table').hide();
@@ -333,8 +338,12 @@ $(document).ready(function(){
 			        
 			        
 			    });*/
+			
+			
+	
 	        		
-		});
+	});
+
 
 		$("#myBtn").click(function(){
 	        $("#myModal").modal();
@@ -357,7 +366,8 @@ $(document).ready(function(){
 			}
 		}
 
-		function myModalData(){
+		function myModalData(){	
+
 			var premiumAmount;
 			var strtdate = $('#startdate').val();
 			var enddte = $('#enddate').val();
@@ -465,6 +475,11 @@ $(document).ready(function(){
 
 			}
 			
+			//if($('#excluded_activities_extension').find(":selected").text()){
+				premiumAmount=premiumAmount+(premiumAmount*0.25);
+				alert("Your new premium is KES " +premiumAmount );
+			//}
+			
 			$("#exampleModalLabel").html(selected);
 			$("#premium-amount").html("<b>"+formatedNumber(premiumAmount)+"</b>");
 			$("#premiumamount").val(premiumAmount);
@@ -515,5 +530,8 @@ $(document).ready(function(){
 		function formatedNumber(value){
 			return 'KES '+value.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 		}
-			
-	   
+		
+		function increasePremiumby25() {
+			alert("Hi");
+			console.log("Hi");
+		}
