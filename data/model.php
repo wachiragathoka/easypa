@@ -245,6 +245,30 @@ class Model{
 	}
 	
 	
+	function fetchExtraBenefits(){
+		$myDataSource=$this->dbconn->connectDB();
+		
+		$fetchExtraBenefitsstmnt = $myDataSource->prepare(
+				"SELECT benefitname,benefitamount,tag
+									 FROM standard_benefits_uapom_q
+									 JOIN standard_benefit_chosen
+									 ON standard_benefits_uapom_q.tag=standard_benefit_chosen.standard_benefit_tag
+									 WHERE standard_benefit_chosen.unique_key = :unique_key");
+		
+		$fetchExtraBenefitsstmnt->bindParam(':unique_key', $_SESSION['unique_key']);
+		
+		$fetchExtraBenefitsstmnt->execute();
+		
+		if ($fetchExtraBenefitsstmnt->rowCount() > 0){
+			
+			return $fetchExtraBenefitsstmnt->fetchAll(PDO::FETCH_ASSOC);
+			
+		}
+		
+		$this ->dbconn->disconnectDB();
+	}
+	
+	
 	/**
 	 * 
 	 * @return string
