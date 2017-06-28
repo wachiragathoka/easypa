@@ -291,8 +291,11 @@ $(document).ready(function(){
 			});
 			
 			$( ".excluded_activities_extension" ).change(function() {
-				  alert( "Handler for .change() called." );
-				  console.log("HI");
+				if($('#excluded_activities_extension').find(":selected").text()=="Yes"){
+				//premiumAmount=premiumAmount+(premiumAmount*0.25);
+				alert("Your new premium is KES+premiumAmount0.25 "  );
+			}
+				 // console.log("HI");
 		});
 			
 			$('#declarations').hide();			
@@ -475,10 +478,7 @@ $(document).ready(function(){
 
 			}
 			
-			//if($('#excluded_activities_extension').find(":selected").text()){
-				premiumAmount=premiumAmount+(premiumAmount*0.25);
-				alert("Your new premium is KES " +premiumAmount );
-			//}
+
 			
 			$("#exampleModalLabel").html(selected);
 			$("#premium-amount").html("<b>"+formatedNumber(premiumAmount)+"</b>");

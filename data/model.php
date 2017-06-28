@@ -1,5 +1,7 @@
 <?php 
-
+if(!isset($_SESSION['sessionID'])){
+	session_start();
+}
 class Model{
 	private $conn;
 	
@@ -63,7 +65,7 @@ class Model{
 				// prepare sql and bind parameters
 				$clientstmt = $this->conn->prepare(
 						"INSERT INTO easy_pa (
-										user_id,
+										quote_id,
 										cust_firstname, 
 										cust_second_name, 
 										cust_last_name,	
@@ -94,7 +96,7 @@ class Model{
 										cover_enddate
 									)
    	 						VALUES (
-								:user_id, 
+								:quote_id, 
 								:cust_firstname, 
 								:cust_second_name, 
 								:cust_last_name, 
@@ -127,7 +129,7 @@ class Model{
 				
 				
 
-				$clientstmt->bindParam(':user_id', $user_id);
+				$clientstmt->bindParam(':quote_id', $quote_id);
 				$clientstmt->bindParam(':cust_firstname', $cust_firstname);
 				$clientstmt->bindParam(':cust_second_name', $cust_second_name);
 				$clientstmt->bindParam(':cust_last_name', $cust_last_name);
@@ -160,7 +162,7 @@ class Model{
 				$clientstmt->bindParam(':cover_enddate', $cover_enddate);
 				
 				
-				$user_id="Matthew";
+				$quote_id=$_SESSION['sessionID'];
 				$cust_firstname=$param_cust_firstname;
 				$cust_second_name=$param_cust_second_name;
 				$cust_last_name=$param_cust_last_name;
@@ -203,27 +205,38 @@ class Model{
 	function getCustomerdata($sessionID){
 		$customerdata="";
 		
-		$cust_querySTMT="SELECT 
-							'id', 
-							'user_id', 
-							'cust_firstname', 
-							'cust_second_name', 
-							'cust_last_name', 
-							'cust_email',
-							'cust_id_no', 
-							'cust_kra_pin', 
-							'cust_phone_no', 
-							'cust_dob', 
-							'cust_postaladdress', 
-							'cust_postalCode',
-							'nok_name', 
-							'nok_relationship', 
-							'nok_phone_no', 
-							'nok_email'
-						FROM 'easy_pa' 
-						WHERE user_id=".$sessionID;
+		$cust_querySTMT=$this->conn->prepare(
+				"SELECT 
+					'id', 
+					'quote_id', 
+					'cust_firstname', 
+					'cust_second_name', 
+					'cust_last_name',
+					'cust_email',
+					'cust_id_no',
+					'cust_kra_pin',
+					'cust_phone_no', 
+					'cust_dob', 
+					'cust_postaladdress', 
+					'cust_postalCode',
+					'nok_name', 
+					'nok_relationship', 
+					'nok_phone_no', 
+					'nok_email'
+				FROM 'easy_pa' 
+				WHERE quote_id=:sessionID"); //.$sessionID;
 		
-		return array("Mathew Gathoka Wachira","19/01/1980","24003658","A57949667P","5300","00100","0722896425","mgathoka@uap-group.com","Peter Gathoka","Father","07229876654","PMburu@gmail.com");
+		$cust_querySTMT->bindParam(':sessionID', $_SESSION['sessionID']);
+		$cust_querySTMT->execute();
+		
+		if ($cust_querySTMT->rowCount() > 0){
+			
+			return $cust_querySTMT->fetchAll(PDO::FETCH_ASSOC);
+			
+		}
+		
+		$this ->disconnectDB();		
+		//return array("Mathew Gathoka Wachira","19/01/1980","24003658","A57949667P","5300","00100","0722896425","mgathoka@uap-group.com","Peter Gathoka","Father","07229876654","PMburu@gmail.com");
 	}
 	
 	function getPolicyDetails($sessionID){
