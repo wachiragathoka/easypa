@@ -363,7 +363,7 @@ $(document).ready(function(){
 				 $('#student-internship-cover-table').hide();
 				 $('#pa-cover-table').show();
 				 
-			}else if(selected=="Student Personal Accident Cover"){
+			}else if(selected=="Student Accident Cover"){
 				$('#student-internship-cover-table').show();
 				 $('#pa-cover-table').hide();
 			}
@@ -375,7 +375,7 @@ $(document).ready(function(){
 			var strtdate = $('#startdate').val();
 			var enddte = $('#enddate').val();
 			var selected = $('#coverOption_pa_stdnt').find(":selected").text(); 
-			var selectedOption=$('input[name=coverOption]:checked').val();
+			
 			
 
 			//Calculate premiums
@@ -399,10 +399,12 @@ $(document).ready(function(){
 			console.log(selected);
 			console.log(strtdate);
 			console.log(enddte);
-			console.log(selectedOption);
+			
 			
 			
 			if(selected=="Personal Accident Cover" ){//&& customerAge()=="normal"
+				var selectedOption=$('input[name=coverOption]:checked').val();
+				console.log(selectedOption);
 				
 				customerAge();
 				if(selectedOption=="A"){
@@ -418,7 +420,7 @@ $(document).ready(function(){
 				}else if(selectedOption=="F"){
 					premiumAmount=20200
 				}else if(selectedOption=="G"){
-					premiumAmount=26300
+					premiumAmount=26300;
 				}else{}
 
 			/*}else if(selected=="Personal Accident Cover" && customerAge()=="advanced"){
@@ -442,12 +444,12 @@ $(document).ready(function(){
 			}else if(selected=="Personal Accident Cover" && customerAge()=="out"){*/
 				
 			}				
-			else if(selected=="Student Personal Accident Cover"){
+			else if(selected=="Student Accident Cover"){
 
 				var s_selectedOption=$('input[name=s_coverOption]:checked').val();				
 				var studentAnnualSemiannual=$('#annualSemiaAnnual').val();
 				
-				if(studentAnnualSemiannual=="annual"){
+				if(studentAnnualSemiannual=="Annual"){
 					if(s_selectedOption=="A"){
 						premiumAmount=1000;
 					}else if(s_selectedOption=="B"){
@@ -458,7 +460,7 @@ $(document).ready(function(){
 						premiumAmount=2000;
 					}else{}
 
-				}else if(studentAnnualSemiannual=="semiannual"){
+				}else if(studentAnnualSemiannual=="Semi Annual"){
 					if(s_selectedOption=="A"){
 						premiumAmount=500;
 					}else if(s_selectedOption=="B"){

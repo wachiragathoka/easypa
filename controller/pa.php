@@ -1,17 +1,24 @@
 <?php
+include_once '../config/config.php';
 include '../data/model.php';
 $model = new Model ();
 
+
 if (isset ( $_POST ['Submit'] ) && $_POST ['Submit'] == "Get My Quote") {
 	
-	if(isset($_POST['coverOption_pa_stdnt']) && $_POST['coverOption_pa_stdnt']==2){
+	$_SESSION['quote_Id']= md5(time().rand(10,100));
+	
+	if(isset($_POST['coverOption_pa_stdnt']) && $_POST['coverOption_pa_stdnt']=="Student Accident Cover"){
 		$s_annualSemiaAnnual=filter_var ($_POST['annualSemiaAnnual'], FILTER_SANITIZE_STRING); //return annual and semiannual
 		$cover_option=filter_var ($_POST ['s_coverOption'], FILTER_SANITIZE_STRING); // radio
+		
 	
 	}else {
 		$cover_option = $_POST ['coverOption']; // radio
-		$s_annualSemiaAnnual="NAN";
+		$s_annualSemiaAnnual="NA";
 	}
+	
+	
 	$cust_firstname = filter_var ( $_POST ['fname'], FILTER_SANITIZE_STRING );
 	$cust_second_name = filter_var ( $_POST ['sname'], FILTER_SANITIZE_STRING );
 	$cust_last_name = filter_var ( $_POST ['lname'], FILTER_SANITIZE_STRING );
@@ -48,6 +55,7 @@ if (isset ( $_POST ['Submit'] ) && $_POST ['Submit'] == "Get My Quote") {
 	$cover_enddate = filter_var ( $_POST ['enddate'],FILTER_SANITIZE_STRING );
 	
 	$model->insertPolicydata ( 
+			$_SESSION['quote_Id'],
 			$cust_firstname, 
 			$cust_second_name, 
 			$cust_last_name, 

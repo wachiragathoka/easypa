@@ -177,7 +177,7 @@ class PDF extends FPDF
 		$this->SetDrawColor(245,245,245);
 		//$this->SetLineWidth(.1);
 		//$this->Cell(190,7,$data,"TB",0,'L',true);
-		$this->MultiCell(130,5,$data,1,'L',true);
+		$this->MultiCell(180,5,$data,1,'L',true);
 		$this->Ln();  
 	}
 	
@@ -294,7 +294,9 @@ $pdf->subHeadingCell("CLIENT DETAILS",10,39);
 
 //Customer Data
 $datasource=new Model();
-$customerData=$datasource->getCustomerdata($_SESSION['sessionID']);
+$customerData=$datasource->getCustomerdata($_SESSION['quote_Id']);
+
+
 
 $customerDatasubheading=array("Name","Date Of Birth","ID Number", "KRA PIN","P.O. Box","Postal Code","Phone Number","Email","Next of Kin","Relationship","Phone Number","Email");
 
@@ -303,9 +305,9 @@ $pdf->tableData($customerDatasubheading,$customerData,10,48);
 $pdf->subHeadingCell("COVER DETAILS",10,92);
 
 //Cover Details
-
-$CoverSubheading=array("Cover Amount (KES)","Cover Option:","Cover Start on:", "Cover ends on:");
-$coverdetails=$datasource->getPolicyDetails($_SESSION['sessionID']);
+$datasource2=new Model();
+$CoverSubheading=array("Premium Amount (KES)","Cover Option:","Cover Start on:", "Cover ends on:");
+$coverdetails=$datasource2->getPolicyDetails($_SESSION['quote_Id']);
 $pdf->tableData($CoverSubheading,$coverdetails,10,99);
 
 //Cover Plan benefits
@@ -318,8 +320,8 @@ $selectedCoverbenefitsTitles=array(
 				"Accidental medical Expense",
 				"Artificial Appliance",
 				"Last Expense(Accidental Death)");
-
-$selectedCoverbenefits=$datasource->getSelectedCoverBenefits($_SESSION['sessionID']);
+$datasource3=new Model();
+$selectedCoverbenefits=$datasource3->getSelectedCoverBenefits($_SESSION['quote_Id']);
 //$selectedCoverbenefits=$pdffactory->getCoverBenefits("A");
 $pdf->benefistTableData($selectedCoverbenefitsTitles,$selectedCoverbenefits,10,120);
 
@@ -331,39 +333,23 @@ $pdf->dataCell($timeExcessdata,13,193);
 
 
 //Declarations
+$declarationQuestionsDatasource=new Model();
+$declarationQuestions= $declarationQuestionsDatasource->getdeclarationQuestions($_SESSION['quote_Id']); 
 
-$declarationQuestions=array(
-		"Declaration",
-		"Have you previously held Personal Accident cover ?",
-		"If yes , name the insurer:",
-		"Are you free from any physical disability or mental illness to the best of your knowledge ?",
-		"If No above, give details:",
-		"Give details of all accidents you have sustained in the last five (5) years :",
-		"Are you engaged in any of the excluded activities or occupations",
-		"If Yes, would you like an extension of cover to these activities(Extra 25% of the basic premium )"
-);
+$declarationsResponsesDatasource=new Model();
+$declarationsResponses=$declarationsResponsesDatasource->getDeclarationsResponses($_SESSION['quote_Id']); 
 
-$declarationsResponses=array(
-		"Response",
-		"Yes",
-		"UAP",
-		"No",
-		"Example of disability is listed here",
-		"Accident 1. Give details here, Accident 2. Give details here, Accident 3. Give details here",
-		"Yes: Football, horse racing",
-		"Yes, I would like. additional cover"
-		);
 $pdf->subHeadingCell("DECLARARTIONS",10,210);
 $pdf->declarationsTable($declarationQuestions,$declarationsResponses,10,217);
 
 $pdf->AddPage();
 //$pdf->SetAutoPageBreak(true);
 //AcceptanceDeclaration
-$acceptanceDeclaration="I warrant that the above statements made by me or on my behalf are true and complete to the best of my knowledge and belief and I agree that this proposal shall bethe basis of the contract between me and the company. I also declare that no insurer has ever declined, refused to renew , terminated my insurance , increased my insurance premium or imposed special terms";
-$pdf->multiCelldata($acceptanceDeclaration,10,10);
+$acceptanceDeclaration="[ACCEPTED] I warrant that the above statements made by me or on my behalf are true and complete to the best of my knowledge and belief and I agree that this proposal shall bethe basis of the contract between me and the company. I also declare that no insurer has ever declined, refused to renew , terminated my insurance , increased my insurance premium or imposed special terms";
+$pdf->multiCelldata($acceptanceDeclaration,10,35);
 
 //Excluded activities
-$pdf->subHeadingCell("Exclusions",10,37);
+$pdf->subHeadingCell("Exclusions",10,65);
 $exclusions=array(
 		"1. Manufacture of fireworks or explosives",
 		"2. Sinking of air, water or gas wells",
@@ -382,11 +368,11 @@ if(count($exclusions)%2!=0){
 
 $firsthalf=array_slice($exclusions, 0, ceil(count($exclusions)/2));
 $secondhalf=array_slice($exclusions, floor(count($exclusions)/2));
-$pdf->exclusions($firsthalf,$secondhalf,10,44);
+$pdf->exclusions($firsthalf,$secondhalf,10,71);
 
 
 //payment Options
-$pdf->subHeadingCell("PAYMENT OPTIONS",10,82);
+$pdf->subHeadingCell("PAYMENT OPTIONS",10,111);
 $MpesaPayment=array(
 		"Paybill Number: 260260",
 		"Account Number : Your Policy Number"
@@ -401,7 +387,7 @@ $bankDetails=array(
 		
 );
 
-$pdf->payMentOption($MpesaPayment,$bankDetails,10,90);
+$pdf->payMentOption($MpesaPayment,$bankDetails,10,118);
 
 
 
@@ -411,7 +397,7 @@ $subheaders=array("Generated By:","Date:");
 $SystemDetails= array("EasyDIRECT SelfService Portal","".date('F j, Y, g:i a'));
 
 
-$pdf->QuoteGenerationDate($subheaders,$SystemDetails,10,150);
+$pdf->QuoteGenerationDate($subheaders,$SystemDetails,10,179);
 
 $pdf->Output('D','Personal Accident Quote.pdf');
 ?>

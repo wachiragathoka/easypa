@@ -1,5 +1,5 @@
 <?php 
-include 'config/config.php';
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -127,8 +127,8 @@ include 'config/config.php';
 						<div class="col-lg-5">
 							<select class="form-control" id="coverOption_pa_stdnt" name="coverOption_pa_stdnt" onchange="paStudentPaView()">
 								<option selected>Choose One...</option>
-								<option value="1">Personal Accident Cover</option>
-								<option value="2">Student Personal Accident Cover</option>
+								<option value="Personal Accident Cover">Personal Accident Cover</option>
+								<option value="Student Accident Cover">Student Accident Cover</option>
 							</select>
 						</div>
 					</div>
@@ -274,8 +274,8 @@ include 'config/config.php';
 							<div class="col-lg-8">
 							<select class="form-control" id=annualSemiaAnnual name="annualSemiaAnnual">
 								<option selected>Choose One...</option>
-								<option value="annual">Annual Cover</option>
-								<option value="semiannual">Semi Annual Cover</option>
+								<option value="Annual">Annual Cover</option>
+								<option value="Semi Annual">Semi Annual Cover</option>
 							</select> 
 						 </div>
 						 <br>

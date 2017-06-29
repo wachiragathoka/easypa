@@ -1,7 +1,7 @@
 <?php 
-if(!isset($_SESSION['sessionID'])){
-	session_start();
-}
+//if(!isset($_SESSION['sessionID'])){
+	//session_start();
+//}
 class Model{
 	private $conn;
 	
@@ -29,7 +29,9 @@ class Model{
 	 * This method is called firts to Insert customerdata in DB
 	 *
 	 */
-	function insertPolicydata($param_cust_firstname,
+	function insertPolicydata(
+			$param_quote_Id,
+			$param_cust_firstname,
 			$param_cust_second_name,
 			$param_cust_last_name,
 			$param_cust_email,
@@ -125,9 +127,7 @@ class Model{
 								:s_annualSemiaAnnual, 
 								:cover_startdate, 
 								:cover_enddate)"
-						);
-				
-				
+						);				
 
 				$clientstmt->bindParam(':quote_id', $quote_id);
 				$clientstmt->bindParam(':cust_firstname', $cust_firstname);
@@ -162,7 +162,7 @@ class Model{
 				$clientstmt->bindParam(':cover_enddate', $cover_enddate);
 				
 				
-				$quote_id=$_SESSION['sessionID'];
+				$quote_id=$param_quote_Id;
 				$cust_firstname=$param_cust_firstname;
 				$cust_second_name=$param_cust_second_name;
 				$cust_last_name=$param_cust_last_name;
@@ -202,60 +202,319 @@ class Model{
 				
 	}
 	
-	function getCustomerdata($sessionID){
-		$customerdata="";
+	function getCustomerdata($quote_Id){
+		
+		//var_dump($quote_Id);
+		$customerdata=array();
 		
 		$cust_querySTMT=$this->conn->prepare(
 				"SELECT 
-					'id', 
-					'quote_id', 
-					'cust_firstname', 
-					'cust_second_name', 
-					'cust_last_name',
-					'cust_email',
-					'cust_id_no',
-					'cust_kra_pin',
-					'cust_phone_no', 
-					'cust_dob', 
-					'cust_postaladdress', 
-					'cust_postalCode',
-					'nok_name', 
-					'nok_relationship', 
-					'nok_phone_no', 
-					'nok_email'
-				FROM 'easy_pa' 
-				WHERE quote_id=:sessionID"); //.$sessionID;
+					id, 
+					quote_id, 
+					cust_firstname, 
+					cust_second_name, 
+					cust_last_name,
+					cust_email,
+					cust_id_no,
+					cust_kra_pin,
+					cust_phone_no, 
+					cust_dob, 
+					cust_postaladdress, 
+					cust_postalCode,
+					nok_name, 
+					nok_relationship, 
+					nok_phone_no, 
+					nok_email
+				FROM easy_pa 
+				WHERE quote_id=:quote_Id"); //.$sessionID;
 		
-		$cust_querySTMT->bindParam(':sessionID', $_SESSION['sessionID']);
+		$cust_querySTMT->bindParam(':quote_Id', $quote_Id);//constant("sessionID")
 		$cust_querySTMT->execute();
+		
+		//v//ar_dump($quote_Id);
+		//print_r($cust_querySTMT->rowCount());
 		
 		if ($cust_querySTMT->rowCount() > 0){
 			
-			return $cust_querySTMT->fetchAll(PDO::FETCH_ASSOC);
 			
+			
+			$customerdataAssoc=$cust_querySTMT->fetchAll(PDO::FETCH_ASSOC);
+			
+			//var_dump($customerdataAssoc);
+			
+			$cust_firstname=$customerdataAssoc[0]['cust_firstname'];
+			$cust_second_name=$customerdataAssoc[0]['cust_second_name'];
+			$cust_last_name=$customerdataAssoc[0]['cust_last_name'];
+			$cust_email=$customerdataAssoc[0]['cust_email'];
+			$cust_id_no=$customerdataAssoc[0]['cust_id_no'];
+			$cust_kra_pin=$customerdataAssoc[0]['cust_kra_pin'];
+			$cust_phone_no=$customerdataAssoc[0]['cust_phone_no'];
+			$cust_dob=$customerdataAssoc[0]['cust_dob'];
+			$cust_postaladdress=$customerdataAssoc[0]['cust_postaladdress'];
+			$cust_postalCode=$customerdataAssoc[0]['cust_postalCode'];
+			$nok_name=$customerdataAssoc[0]['nok_name'];
+			$nok_relationship=$customerdataAssoc[0]['nok_relationship'];
+			$nok_phone_no=$customerdataAssoc[0]['nok_phone_no'];
+			$nok_email=$customerdataAssoc[0]['nok_email'];
+			
+			//for($i==0;$i< count($cust_querySTMT->fetchAll(PDO::FETCH_ASSOC));$i++){
+				//array_push($customerdata, ());
+			//}
+			
+			
+			//create array
+			
+			array_push($customerdata, $cust_firstname." ".$cust_second_name." ".$cust_last_name);//name
+			array_push($customerdata, $cust_dob);
+			array_push($customerdata, $cust_id_no);
+			array_push($customerdata, $cust_kra_pin);
+			array_push($customerdata, $cust_postaladdress);
+			array_push($customerdata, $cust_postalCode);
+			array_push($customerdata, $cust_phone_no);
+			array_push($customerdata, $cust_email);
+			array_push($customerdata, $nok_name);
+			array_push($customerdata, $nok_relationship);
+			array_push($customerdata, $nok_phone_no);
+			array_push($customerdata, $nok_email);
 		}
 		
 		$this ->disconnectDB();		
-		//return array("Mathew Gathoka Wachira","19/01/1980","24003658","A57949667P","5300","00100","0722896425","mgathoka@uap-group.com","Peter Gathoka","Father","07229876654","PMburu@gmail.com");
+		return $customerdata;
+		//array("Mathew Gathoka Wachira","19/01/1980","24003658","A57949667P","5300","00100","0722896425","mgathoka@uap-group.com","Peter Gathoka","Father","07229876654","PMburu@gmail.com");
 	}
 	
-	function getPolicyDetails($sessionID){
+	function getPolicyDetails($quote_Id){
+		$policyDetail=array();
 		
-		$PolicyDetailsSTMT="SELECT 
-				 	'cover_premium',
-					'cover_option',
-					's_annualSemiaAnnual',
-					'cover_startdate',
-					'cover_enddate'
-";
+		$PolicyDetail_SQL="SELECT 
+					cover_option_pa_std,
+					cover_option,
+				 	cover_premium,
+					s_annualSemiaAnnual,
+					cover_startdate,
+					cover_enddate
+				FROM easy_pa 
+				WHERE quote_id=:quote_Id";
+		
+		$PolicyDetail_STMT=$this->conn->prepare($PolicyDetail_SQL);
+		
+		$PolicyDetail_STMT->bindParam(':quote_Id', $quote_Id);//constant("sessionID")
+		$PolicyDetail_STMT->execute();
 		
 		
-		return array("3000","PLAN E","6-July-2017","5-July-2017");
+		
+		if ($PolicyDetail_STMT->rowCount() > 0){
+			$PolicyDetail_ASSOC=$PolicyDetail_STMT->fetchAll(PDO::FETCH_ASSOC);
+			
+			
+			
+			$cover_option_pa_std=$PolicyDetail_ASSOC[0]['cover_option_pa_std'];
+			$cover_option=$PolicyDetail_ASSOC[0]['cover_option'];
+			$cover_premium=$PolicyDetail_ASSOC[0]['cover_premium'];
+			$s_annualSemiaAnnual=$PolicyDetail_ASSOC[0]['s_annualSemiaAnnual'];
+			$cover_startdate=$PolicyDetail_ASSOC[0]['cover_startdate'];
+			$cover_enddate=$PolicyDetail_ASSOC[0]['cover_enddate'];
+			
+			
+			array_push($policyDetail, $cover_premium);
+			array_push($policyDetail, $s_annualSemiaAnnual." ".$cover_option_pa_std." Plan: ".$cover_option);
+			array_push($policyDetail, $cover_startdate);
+			array_push($policyDetail, $cover_enddate);
+		}
+		
+		return $policyDetail;
+		//return array("3000","PLAN E","6-July-2017","5-July-2017");
 	}
 	
-	function getSelectedCoverBenefits($sessionID){
-		return array("Amounts(KES)",100000,20000,10000,30000,2000,50000,200);
+	
+	/**
+	 * 
+	 * @param unknown $quote_Id
+	 * @return string[]|number[]
+	 */
+	
+	function getSelectedCoverBenefits($quote_Id){
+		//select the selected cover (PA or Student cover, then the option)
+		$selectedCover_SQL="SELECT
+					cover_option_pa_std,
+					cover_option
+			FROM easy_pa
+			WHERE quote_id=:quote_Id";
+		
+		$selectedCover_STMT=$this->conn->prepare($selectedCover_SQL);
+		
+		$selectedCover_STMT->bindParam(':quote_Id', $quote_Id);
+		$selectedCover_STMT->execute();
+		
+		if ($selectedCover_STMT->rowCount() > 0){
+			$selectedCover_ASSOC=$selectedCover_STMT->fetchAll(PDO::FETCH_ASSOC);
+			
+			$cover_option_pa_std=$selectedCover_ASSOC['0']['cover_option_pa_std'];
+			$cover_option=$selectedCover_ASSOC['0']['cover_option'];
+			
+			if($cover_option_pa_std=="Personal Accident Cover"){
+				//Handle PA
+				switch ($cover_option) {
+					case 'A':
+					
+						return array("Amounts(KES)",750000	,750000, 2000, 3500, 75000, 10000, 10000);
+					break;
+					
+					case 'B':
+						
+						return array("Amounts(KES)", 1000000, 1000000, 2500, 5000, 100000, 20000, 15000);
+						break;
+					
+					case 'C':
+						
+						return array("Amounts(KES)", 2000000, 2000000, 5000, 10000, 200000, 25000, 25000);
+						break;
+						
+					case 'D':
+						
+						return array("Amounts(KES)", 3000000, 3000000, 7500, 15000, 250000, 30000, 35000);
+						break;
+						
+					case 'E':
+						
+						return array("Amounts(KES)", 5000000, 5000000, 8500, 20000, 300000, 35000, 50000);
+						break;
+						
+					case 'F':
+						
+						return array("Amounts(KES)", 7500000, 7500000, 10000, 25000, 400000, 40000, 50000);
+						break;
+						
+					case 'G':
+						
+						return array("Amounts(KES)", 10000000, 10000000, 20000, 30000, 500000, 50000, 75000);
+						break;
+						
+					default:
+						;
+					break;
+				}
+				
+			}else if($cover_option_pa_std=="Student Accident Cover"){
+				//handle students
+				switch ($cover_option) {
+					case 'A':
+						return array("Amounts(KES)", 0, 0, 0, 0, 0, 0, 0);
+						break;
+						
+					case 'B':
+						return array("Amounts(KES)", 0, 0, 0, 0, 0, 0, 0);
+						break;
+						
+					case 'C':
+						return array("Amounts(KES)", 0, 0, 0, 0, 0, 0, 0);
+						break;
+						
+					case 'D':
+						return array("Amounts(KES)", 0, 0, 0, 0, 0, 0, 0);
+						break;						
+						
+					case 'E':
+						return array("Amounts(KES)", 0, 0, 0, 0, 0, 0, 0);
+						break;
+						
+					default:
+						;
+					break;
+				}
+				
+				
+			}else{
+				//Do nothing
+			}
+			
+		}else{
+			return array("error", 0, 0, 0, 0, 0, 0, 0);
+		}		
+		//
 	}
+	
+	/**
+	 * 
+	 * @param unknown $paramQuote_ID
+	 * @return string[]
+	 */
+	function  getdeclarationQuestions($quote_Id){
+		return array(
+				"Declaration",
+				"Have you previously held Personal Accident cover ?",
+				"If yes , name the insurer:",
+				"Are you free from any physical disability or mental illness to the best of your knowledge ?",
+				"If No above, give details:",
+				"Give details of all accidents you have sustained in the last five (5) years :",
+				"Are you engaged in any of the excluded activities or occupations",
+				"If Yes, would you like an extension of cover to these activities(Extra 25% of the basic premium )"
+		);
+	}
+	
+	
+	/**
+	 * 
+	 * @param unknown $quote_Id
+	 * @return array
+	 */
+	function getDeclarationsResponses($quote_Id){
+		$declarationsResponses=array();
+		$declarationsResponses_SQL="
+					SELECT
+						previus_cover,
+						previus_cover_name,
+						physical_disability,
+						physical_disability_names,
+						accidents_in_five_years,
+						excluded_activities,
+						excluded_activities_extension
+					FROM easy_pa 
+					WHERE quote_id=:quote_Id";
+				
+		
+		$declarationsResponses_STMT=$this->conn->prepare($declarationsResponses_SQL);
+		
+		$declarationsResponses_STMT->bindParam(':quote_Id', $quote_Id);
+		$declarationsResponses_STMT->execute();
+		
+		if ($declarationsResponses_STMT->rowCount() > 0){
+			$declarationsResponses_ASSOC=$declarationsResponses_STMT->fetchAll(PDO::FETCH_ASSOC);
+			
+			$previus_cover=$declarationsResponses_ASSOC['0']['previus_cover'];
+			$previus_cover_name=$declarationsResponses_ASSOC['0']['previus_cover_name'];
+			$physical_disability=$declarationsResponses_ASSOC['0']['physical_disability'];
+			$physical_disability_names=$declarationsResponses_ASSOC['0']['physical_disability_names'];
+			$accidents_in_five_years=$declarationsResponses_ASSOC['0']['accidents_in_five_years'];
+			$excluded_activities=$declarationsResponses_ASSOC['0']['excluded_activities'];
+			$excluded_activities_extension=$declarationsResponses_ASSOC['0']['excluded_activities_extension'];
+			
+			
+			array_push($declarationsResponses, "Your Response");
+			array_push($declarationsResponses, $previus_cover);
+			array_push($declarationsResponses, $previus_cover_name);
+			array_push($declarationsResponses, $physical_disability);
+			array_push($declarationsResponses, $physical_disability_names);
+			array_push($declarationsResponses, $accidents_in_five_years);
+			array_push($declarationsResponses, $excluded_activities);
+			array_push($declarationsResponses, $excluded_activities_extension);
+			
+			
+			return $declarationsResponses;
+/* 			array(
+					"Response",
+					"Yes",
+					"UAP",
+					"No",
+					"Example of disability is listed here",
+					"Accident 1. Give details here, Accident 2. Give details here, Accident 3. Give details here",
+					"Yes: Football, horse racing",
+					"Yes, I would like. additional cover"
+			); */
+		}
+	}
+	
+	
 	
 	
 	function fetchExtraBenefits(){
