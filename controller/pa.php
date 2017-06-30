@@ -43,7 +43,7 @@ if (isset ( $_POST ['Submit'] ) && $_POST ['Submit'] == "Get My Quote") {
 	$physical_disability=$_POST['physical_disability'];
 	$physical_disability_names=filter_var($_POST['physical_disability_names'],FILTER_SANITIZE_STRING);
 	$accidents_in_five_years=filter_var($_POST['accidents_in_five_years'], FILTER_SANITIZE_STRING);
-	$excluded_activities=filter_var($_POST['excluded_activities'], FILTER_SANITIZE_STRING);
+	$excluded_activities=filter_var($_POST['excluded_activities']); //array
 	$excluded_activities_extension=filter_var($_POST['excluded_activities_extension'], FILTER_SANITIZE_STRING);
 	$final_declarations=$_POST['final_declarations'];
 	

@@ -1,14 +1,3 @@
-<script type="text/javascript" src="../assets/js/app.js"></script>
-<link rel="stylesheet"	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-
-<!-- Include Bootstrap Datepicker -->
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.min.css" />
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker3.min.css" />
-<link rel="stylesheet" type="text/css" href="../assets/css/style.css"> 
-
-
-
-
 <!-- declarations -->
 <div id="declarations">
 	<fieldset class="">
@@ -69,10 +58,17 @@
 						<tr>
 							<td>4(b) If Yes, would you like an extension of cover to these
 								activities ?*</td>
-							<td><select name="excluded_activities_extension" id="excluded_activities_extension" class="excluded_activities_extension">
-									<option>Select One</option>
-									<option value="yes">Yes</option>
-									<option value="no">No</option>
+							<td><select multiple name="excluded_activities_extension[]" id="excluded_activities_extension" class="excluded_activities_extension">
+									<option value="">Select One</option>
+									<option value="Manufacture of fireworks or explosives">Manufacture of fireworks or explosives</option>
+									<option value="Sinking of air, water or gas wells">Sinking of air, water or gas wells</option>
+									<option value="Construction and maintenance of coffer dam">Construction and maintenance of coffer dam</option>
+									<option value="Airline crew & ship or boat crew">Airline crew & ship or boat crew</option>
+									<option value="Racing, Rallies and speed testing">Racing, Rallies and speed testing</option>
+									<option value="Naval, military, police or Air force operations">Naval, military, police or Air force operations</option>
+									<option value="Professional sports">Professional sports</option>
+									<option value="Diving">Diving</option>
+									<option value="Mining">Mining</option>
 							</select></td>
 						</tr>
 					</tbody>

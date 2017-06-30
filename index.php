@@ -389,9 +389,9 @@
 
 				<!-- Step 3 -->
 				<fieldset id="personal_information" class="">
-					<legend>Congrats. Please lets Know you better</legend>
+					<legend>Please lets Know you better</legend>
 					<div class="form-group">
-						<label for="fname2" class="col-lg-4 control-label">First Name</label>
+						<label for="fname2" class="col-lg-4 control-label">First Name*</label>
 						<div class="col-xs-4">
 							<input type="text" class="form-control" id="fname2" name="fname2"
 								placeholder="First Name">
@@ -409,7 +409,7 @@
 					
 					<!-- Last Name -->
 					<div class="form-group">
-						<label for="lname" class="col-lg-4 control-label">Last Name</label>
+						<label for="lname" class="col-lg-4 control-label">Last Name*</label>
 						<div class="col-xs-4">
 							<input type="text" class="form-control" id="lname" name="lname"
 								placeholder="Last Name">
@@ -418,7 +418,7 @@
 					
 					<!-- ID Numnber -->
 					<div class="form-group">
-						<label for="conf_idNo" class="col-lg-4 control-label">ID/Passport Number</label>
+						<label for="conf_idNo" class="col-lg-4 control-label">ID/Passport Number*</label>
 						<div class="col-xs-4">							
 							<input type="text" class="form-control" name="idpass" id="idpass" placeholder="ID / Passport Number">
 						</div>
@@ -426,11 +426,11 @@
 					
 					<!-- Phone Number -->
 					<div class="form-group">
-						<label for="conf_phone" class="col-lg-4 control-label">Your Phone Number</label>
+						<label for="conf_phone" class="col-lg-4 control-label">Your Phone Number*</label>
 						<div class="col-xs-4">
 							
 							<input type="text" class="form-control bfh-phone"
-								data-format="+254 (dd) dddddd" name="conf_phone"
+								name="conf_phone"
 								placeholder="e.g. +254722000000">
 
 						</div>
@@ -438,7 +438,7 @@
 					
 					<!-- Email address -->
 					<div class="form-group">
-						<label for="email2" class="col-lg-4 control-label">Email</label>
+						<label for="email2" class="col-lg-4 control-label">Email*</label>
 						<div class="col-xs-5">
 							<input type="email" class="form-control" id="email2" name="email2"
 								placeholder="Email">
@@ -447,7 +447,7 @@
 					
 					<!-- KRA PIN -->
 					<div class="form-group">
-						<label for="krapin" class="col-lg-4 control-label">KRA PIN</label>
+						<label for="krapin" class="col-lg-4 control-label">KRA PIN*</label>
 						<div class="col-lg-4">
 							<input type="text" class="form-control" id="krapin" name="krapin"
 								placeholder="KRA PIN">
@@ -458,7 +458,7 @@
 					<div class="form-group">
 					
 					
-						<label for="dob" class="col-lg-4 control-label">Date of Birth</label>
+						<label for="dob" class="col-lg-4 control-label">Date of Birth*</label>
 						<div class="col-lg-4">
 						<div class='input-group input-append date' id='dob'>
 							<input type='text' class="form-control" name="custdob"  /> 
@@ -470,7 +470,7 @@
 					
 					<!-- Postal Address -->
 					<div class="form-group">
-						<label for="postaladdress" class="col-lg-4 control-label">Postal Address</label>
+						<label for="postaladdress" class="col-lg-4 control-label">P.O. Box</label>
 						<div class='col-lg-5'>
 							<input type='text' class="form-control" name="postaladdress" id="postaladdress" placeholder="Postal Address"/>
 						</div>
@@ -478,7 +478,7 @@
 					
 					<!-- postal code -->
 					<div class="form-group">
-						<label for="postalcode" class="col-lg-4 control-label">Postal Code</label>
+						<label for="postalcode" class="col-lg-4 control-label">Postal Code*</label>
 						<div class='col-lg-3'>
 							<input type='text' class="form-control" name="postalcode" id="postalcode" placeholder="Postal Code"/>
 						</div>
@@ -486,7 +486,7 @@
 					
 					<!-- Next of KIN full Name -->
 					<div class="form-group">
-						<label for="nok" class="col-lg-4 control-label">Next of kin Full names</label>
+						<label for="nok" class="col-lg-4 control-label">Next of kin Full names*</label>
 						<div class='col-lg-8'>
 							<input type='text' class="form-control" name="nok" id="nok" placeholder="e.g. James Odhiambo Kamau"/>
 						</div>
@@ -495,7 +495,7 @@
 
 					<!-- Relationship with next of KIN -->
 					<div class="form-group">
-						<label for="nokrelationship" class="col-lg-4 control-label">Relationship with next of kin</label>
+						<label for="nokrelationship" class="col-lg-4 control-label">Relationship with next of kin*</label>
 						<div class="col-lg-4">
 							<select class="form-control" id="nokrelationship" name="nokrelationship">
 								<option selected>Choose One...</option>
@@ -514,7 +514,7 @@
 
 				<!-- Next of KIN Phone Number -->
 					<div class="form-group">
-						<label for="conf_nokphone" class="col-lg-4 control-label">Next of Kin Phone Number</label>
+						<label for="conf_nokphone" class="col-lg-4 control-label">Next of Kin Phone Number*</label>
 						<div class="col-lg-8">							
 							<input type="text" class="form-control" name="conf_nokphone" id="conf_nokphone" placeholder="e.g. +254722000000">
 						</div>
@@ -522,9 +522,9 @@
 					
 					<!-- Next of KIN emiail address -->
 					<div class="form-group">
-						<label for="conf_nokemail" class="col-lg-4 control-label">Next of Kin Email address</label>
+						<label for="conf_nokemail" class="col-lg-4 control-label">Next of Kin Email address*</label>
 						<div class="col-lg-8">							
-							<input type="text" class="form-control" name="conf_nokemail" id="conf_nokemail" placeholder="e.g. +254722000000">
+							<input type="text" class="form-control" name="conf_nokemail" id="conf_nokemail" placeholder="joe@example.com">
 						</div>
 					</div>	
 					
@@ -534,7 +534,7 @@
 						<div class="col-lg-8">
 							<p>
 								<a class="btn btn-info" id="previous">Previous</a>					
-								<input class="btn btn-success" type="button" value="A few Questions Abaout you" id="to-declarations">
+								<input class="btn btn-success next" type="button" value="A few Questions About you" id="to-declarations">
 							</p>
 
 						</div>

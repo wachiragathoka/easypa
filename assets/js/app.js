@@ -7,6 +7,25 @@ $(document).ready(function(){
 			$.validator.addMethod("usernameRegex", function(value, element) {
 				return this.optional(element) || /^[a-zA-Z0-9]*$/i.test(value);
 			}, "Username must contain only letters, numbers");
+			
+			//validate date of birth
+			$.validator.addMethod("MinimunDOB", function (value, element) {
+				
+				return computeAge(element.value) >= 18;
+		
+			},"You must be 18 Years and above");
+			
+			/**Date validator */
+			$.validator.addMethod("greaterThan", 
+					function(value, element, params) {
+
+					    if (!/Invalid|NaN/.test(new Date(value))) {
+					        return new Date(value) > new Date($(params).val());
+					    }
+
+					    return isNaN(value) && isNaN($(params).val()) 
+					        || (Number(value) > Number($(params).val())); 
+					},'Must be greater than {0}.');
 
 			$(".next").click(function(){
 				var form = $("#myform");
@@ -16,64 +35,129 @@ $(document).ready(function(){
 					highlight: function(element, errorClass, validClass) {
 						$(element).closest('.form-group').addClass("has-error");
 					},
+					
 					unhighlight: function(element, errorClass, validClass) {
 						$(element).closest('.form-group').removeClass("has-error");
 					},
+					
 					rules: {
 						fname: {
 							required: true,
 							usernameRegex: true,
 							minlength: 3,
 						},
-						//custdob1: {
-							//required: true,							
-						//},
+						
+						custdob1: {
+							required: true,	
+							MinimunDOB: true,														 							
+						},
+						
 						email: {
 							required: true,
 							minlength: 3,
 							email: true,
 						},
+						
 						conf_phone:{
 							required: true,
-							
 						},
 						
 						coverOption_pa_stdnt:{
 							required: true,
 						},
+						
 						name: {
 							required: true,
 							minlength: 3,
 						},
 						
 						startdate:{
-							required: true,
-							
+							required: true,							
 						},
 						
 						enddate:{
-							required: true,							
-							greaterThan: "#startdate",
+							required: true,
 						},
+						
+						coverOption_pa_stdnt:{
+							required : true,
+						},
+						
+						annualSemiaAnnual :{
+							require : true,
+						},
+						
+						coverOption: {
+							required : true,
+						},
+						
+						s_coverOption : {
+							required : true,
+						},
+						
+						fname2: {
+							required: true,
+							usernameRegex: true,
+							minlength: 3,
+						},
+						
+						lname: {
+							required: true,
+						},
+						
+						idpass :{
+							required : true,
+						},
+						
+						email2 : {
+							required : true,
+						},
+						
+						krapin : {
+							required : true,
+						},
+						
+						custdob :{
+							required : true,
+						},
+						
+						postaladdress :{
+							required : true,
+						},
+						
+						postalcode : {
+							required : true,
+						},
+						
+						nok :{
+							required : true,
+						},
+						
+						nokrelationship : {
+							required : true,
+						},
+						
+						conf_nokphone :{
+							required : true,
+						},
+						
+						conf_nokemail: {
+							required : true,
+						},						
 					},
 					messages: {
 						fname: {
 							required: "First name required",
-							minlength: jQuery.validator.format("Please, at least 3 characters are necessary")
+							minlength: $.validator.format("Please, at least 3 characters are necessary")
 						},
 						custdob1: {
-							required: "We would need this to give you a more accurate quote",
+							required: "This is required to generate an accurate quote",
 						},
 						email: {
 							required: "Email is required",
 						},
-						conf_phone: {
-							required: "This is how we will reach you",
-						},
-						email :{
-							required: "This is where we will send the quote",
-						},
 						
+										
 						coverOption_pa_stdnt:{
 							required: "Please select a cover",
 						},
@@ -84,7 +168,7 @@ $(document).ready(function(){
 						
 						enddate:{
 							required: "When cover ends",
-							greaterThan : "Must be Greater than strat date",
+							
 						},
 						
 					},
@@ -114,17 +198,7 @@ $(document).ready(function(){
 					  }
 				});
 
-				/**Date validator */
-				jQuery.validator.addMethod("greaterThan", 
-						function(value, element, params) {
-
-						    if (!/Invalid|NaN/.test(new Date(value))) {
-						        return new Date(value) > new Date($(params).val());
-						    }
-
-						    return isNaN(value) && isNaN($(params).val()) 
-						        || (Number(value) > Number($(params).val())); 
-						},'Must be greater than {0}.');
+				
 				
 				
 				if (form.valid() === true){
@@ -155,16 +229,15 @@ $(document).ready(function(){
 		            // Revalidate the date field
 		            //$('#myform').formValidation('revalidateField', 'custdob1');
 		        	
-		        	//console.log(computeAge($('#custdob1').val()));
+		        	console.log(computeAge($('#custdob1').val()));
 		        	//customerDOB=$('#custdob1').val();
 		        	if(computeAge($('#custdob1').val())<1){
 		        		console.log("Less "+computeAge($('#custdob1').val()))
 		        	}else{
-		        		console.log("Ok"+computeAge($('#custdob1').val()))
+		        		console.log("Ok "+computeAge($('#custdob1').val()))
 		        	}
 		
 		        });
-
 
 			 $('#datetimepicker6')
 		        .datepicker({
