@@ -2,9 +2,10 @@
 
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>easyDIRECT | Personal Accident Cover</title>
 
 <link rel="stylesheet"	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
@@ -45,11 +46,11 @@
     top: 0;
     right: -15px;
 }
-​
+
 </style>
 </head>
 <body>
-	<div class="container">
+	<div class="container-fluid">
 	<div class="top"> </div>
 <div class="top2" align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="http://easydirect.co.ke/assets/easy-direct-logo.png"></div><br />
 		
@@ -81,7 +82,7 @@
 					<!-- Customer email address -->
 					<div class="form-group">
 						<label for="email" class="col-lg-4 control-label">Your Email
-							Address</label>
+							Address*</label>
 						<div class="col-xs-5">
 							<input type="email" class="form-control" id="email" name="email"
 								placeholder="Email">
@@ -89,7 +90,7 @@
 					</div>
 					<div class="form-group">
 						<label for="conf_phone" class="col-lg-4 control-label">Your Phone
-							Number</label>
+							Number*</label>
 						<div class="col-xs-5">
 							<!-- <input type="password" class="form-control" id="conf_password" name="conf_password" placeholder="e.g. +254722000000"> -->
 							<input type="text" class="form-control bfh-phone" data-format="+254 (dd) dddddd" name="conf_phone" id="conf_phone" placeholder="e.g. +254722000000" >
@@ -124,7 +125,7 @@
 					<div class="form-group">
 						<label for="coverOption" class="col-lg-4 control-label">Your cover
 							Option</label>
-						<div class="col-lg-5">
+						<div class="col-lg-8">
 							<select class="form-control" id="coverOption_pa_stdnt" name="coverOption_pa_stdnt" onchange="paStudentPaView()">
 								<option selected>Choose One...</option>
 								<option value="Personal Accident Cover">Personal Accident Cover</option>
@@ -151,29 +152,29 @@
 							<table class="table table-bordered">
 								<thead class="thead-default">
 									<tr>
-										<th class="th-titles" align="center">Options</th>
-										<th class="th-titles" align="center">A</th>
-										<th class="th-titles" align="center">B</th>
-										<th class="th-titles" align="center">C</th>
-										<th class="th-titles" align="center">D</th>
-										<th class="th-titles" align="center">E</th>
-										<th class="th-titles" align="center">F</th>
-										<th class="th-titles" align="center">G</th>
+										<th class="th-titles" align="center">Premium</th>
+										<th class="th-titles" align="center">Option A <br>KES 2,800</th>
+										<th class="th-titles" align="center">Option B <br>KES 4,000</th>
+										<th class="th-titles" align="center">Option C <br>KES 6,800</th>
+										<th class="th-titles" align="center">Option D <br>KES 9,900</th>
+										<th class="th-titles" align="center">Option E <br>KES 14,600</th>
+										<th class="th-titles" align="center">Option F <br>KES 20,200</th>
+										<th class="th-titles" align="center">Option G <br>KES 26,300</th>
 									</tr>
 								</thead>
 								<tbody>
 									<tr>
-										<td width="420%" scope="row">1. Accidental Death</td>
-										<td align="right" class="align-right">750,000</td>
+										<td width="420%" scope="row">Accidental Death</td>
+										<td align="right" class="align-right">&nbsp;&nbsp;&nbsp;&nbsp;750,000</td>
 										<td align="right" class="align-right">1,000,000</td>
 										<td align="right" class="align-right">2,000,000</td>
 										<td align="right" class="align-right">3,000,000</td>
-										<td align="right" class="align-right">5,000,000</td>
-										<td align="right" class="align-right">7,500,000</td>
-										<td align="right" class="align-right">10,000,000</td>
+										<td align="right" class="align-right">&nbsp;&nbsp;&nbsp;5,000,000</td>
+										<td align="right" class="align-right">&nbsp;&nbsp;&nbsp;7,500,000</td>
+										<td align="right" class="align-right">&nbsp;&nbsp;10,000,000</td>
 									</tr>
 									<tr>
-										<td width="40%">2. Accidental Permanent Total Disablement
+										<td width="40%">Accidental Permanent Total Disablement
 											(Continental Scale Benefts)</td>
 										<td align="right" class="align-right">750,000</td>
 										<td align="right" class="align-right">1,000,000</td>
@@ -184,7 +185,7 @@
 										<td align="right" class="align-right">10,000,000</td>
 									</tr>
 									<tr>
-										<td width="40%">3. Hospital Cash</td>
+										<td width="40%">Hospital Cash</td>
 										<td align="right" class="align-right">2,000</td>
 										<td align="right" class="align-right">2,500</td>
 										<td align="right" class="align-right">5,000</td>
@@ -194,7 +195,7 @@
 										<td align="right" class="align-right">20,000</td>
 									</tr>
 									<tr>
-										<td width="40%">4. Accidental Temporary , Total Disablement,
+										<td width="40%">Accidental Temporary , Total Disablement,
 											(Loss of Income) per week maximum 104 weeks</td>
 										<td align="right" class="align-right">3,500</td>
 										<td align="right" class="align-right">5,000</td>
@@ -205,7 +206,7 @@
 										<td align="right" class="align-right">30,000</td>
 									</tr>
 									<tr>
-										<td width="40%">5. Accidental Medical Expense</td>
+										<td width="40%">Accidental Medical Expense</td>
 										<td align="right" class="align-right">75,000</td>
 										<td align="right" class="align-right">100,000</td>
 										<td align="right" class="align-right">200,000</td>
@@ -278,7 +279,7 @@
 								<option value="Semi Annual">Semi Annual Cover</option>
 							</select> 
 						 </div>
-						 <br>
+						 <p>&nbsp;</p>
 					<!-- </div> -->
 					
 					
@@ -289,27 +290,26 @@
 										<th class="th-titles" align="center">Plan A</th>
 										<th class="th-titles" align="center">Plan B</th>
 										<th class="th-titles" align="center">Plan C</th>
-										<th class="th-titles" align="center">Plan D</th>
-										
+										<th class="th-titles" align="center">Plan D</th>										
 									</tr>
 								</thead>
 								<tbody>
 									<tr>
-										<td width="40%" scope="row">1. Accidental Death</td>
+										<td width="40%" scope="row">Accidental Death</td>
 										<td align="right" class="align-right">200,000</td>
 										<td align="right" class="align-right">250,000</td>
 										<td align="right" class="align-right">300,000</td>
 										<td align="right" class="align-right">400,000</td>										
 									</tr>
 									<tr>
-										<td width="40%" scope="row">2. Accidental disablement</td>
+										<td width="40%" scope="row">Accidental disablement</td>
 										<td align="right" class="align-right">200,000</td>
 										<td align="right" class="align-right">250,000</td>
 										<td align="right" class="align-right">300,000</td>
 										<td align="right" class="align-right">400,000</td>										
 									</tr>
 									<tr>
-										<td width="40%" scope="row">3. Accidental medical reimbursement</td>
+										<td width="40%" scope="row">Accidental medical reimbursement</td>
 										<td align="right" class="align-right">20,000</td>
 										<td align="right" class="align-right">25,000</td>
 										<td align="right" class="align-right">30,000</td>
@@ -338,13 +338,14 @@
 					</div>
 
 					<!-- Dates -->
+					<div id="cover-start-end-dates">
 					<div class="form-group">
 						<label for="url" class="col-lg-4 control-label">Cover Start date</label>
 						<div class="col-lg-4">
 							<div class="form-group">
 							
 								<div class="input-group input-append date" id="datetimepicker6">
-									<input type='text' class="form-control" name="startdate" id="startdate" /> <span
+									<input type='text' class="form-control" name="startdate" id="startdate" onchange="setCoverEndDate()" /> <span
 										class="input-group-addon add-on"> <span
 										class="glyphicon glyphicon-calendar"></span>
 									</span>
@@ -367,7 +368,7 @@
 							</div>
 						</div>
 					</div>
-					
+					</div>
 					
 					<div class="form-group">
 						<label for=" " class="col-lg-4 control-label"></label>
@@ -392,7 +393,7 @@
 					<legend>Please lets Know you better</legend>
 					<div class="form-group">
 						<label for="fname2" class="col-lg-4 control-label">First Name*</label>
-						<div class="col-xs-4">
+						<div class="col-lg-8">
 							<input type="text" class="form-control" id="fname2" name="fname2"
 								placeholder="First Name">
 						</div>
@@ -427,7 +428,7 @@
 					<!-- Phone Number -->
 					<div class="form-group">
 						<label for="conf_phone" class="col-lg-4 control-label">Your Phone Number*</label>
-						<div class="col-xs-4">
+						<div class="col-lg-4">
 							
 							<input type="text" class="form-control bfh-phone"
 								name="conf_phone"
@@ -439,7 +440,7 @@
 					<!-- Email address -->
 					<div class="form-group">
 						<label for="email2" class="col-lg-4 control-label">Email*</label>
-						<div class="col-xs-5">
+						<div class="col-lg-5">
 							<input type="email" class="form-control" id="email2" name="email2"
 								placeholder="Email">
 						</div>
@@ -555,8 +556,8 @@
 					
 					
 					<div class="form-group">
-						<label for=" " class="col-lg-4 control-label"></label>
-						<div class="col-lg-8">
+						<!-- <label  class="col-lg-4 control-label"></label> -->
+						<div class="col-lg-12">
 						
 						<!-- Generate a Quote preview -->
 						

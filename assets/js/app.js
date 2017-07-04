@@ -26,6 +26,22 @@ $(document).ready(function(){
 					    return isNaN(value) && isNaN($(params).val()) 
 					        || (Number(value) > Number($(params).val())); 
 					},'Must be greater than {0}.');
+			
+			//validate input date not greater than today
+			$.validator.addMethod("notGreaterThanToday", function(value, element) {
+				var todaysdate=new Date();
+				var month = todaysdate.getMonth();
+				var day = todaysdate.getdate();
+				var year=todaysdate.getFullYear();
+				
+				var date=new date(day+'/'+month+'/'+year);
+				
+				//return date>element.value;
+				
+				console.log("selected start date is: " +element.value);
+				console.log("todays date= "+date);
+				
+			},'Date must not be earlier than today');
 
 			$(".next").click(function(){
 				var form = $("#myform");
@@ -72,7 +88,8 @@ $(document).ready(function(){
 						},
 						
 						startdate:{
-							required: true,							
+							required: true,
+							greaterThan : true,
 						},
 						
 						enddate:{
@@ -168,7 +185,6 @@ $(document).ready(function(){
 						
 						enddate:{
 							required: "When cover ends",
-							
 						},
 						
 					},
@@ -217,6 +233,9 @@ $(document).ready(function(){
 					current_fs.hide();
 					print_fs.hide();
 					$('#declarations').hide();
+					$('#student-internship-cover-table').hide();
+					$('#pa-cover-table').hide();
+					$('#cover-start-end-dates').hide();
 				}
 			});
 
@@ -435,10 +454,12 @@ $(document).ready(function(){
 			if(selected=="Personal Accident Cover"){
 				 $('#student-internship-cover-table').hide();
 				 $('#pa-cover-table').show();
+				 $('#cover-start-end-dates').show();
 				 
 			}else if(selected=="Student Accident Cover"){
 				$('#student-internship-cover-table').show();
 				 $('#pa-cover-table').hide();
+				 $('#cover-start-end-dates').show();
 			}
 		}
 
@@ -585,6 +606,25 @@ $(document).ready(function(){
 			//}else{
 				//alert ("");
 			//}
+		}
+		
+		function setCoverEndDate(){
+			var startdate=$('#startdate').val();
+			var d =stringToDate(startdate,"dd/MM/yyyy","/");
+			
+			var year = d.getFullYear();
+			
+			var month = d.getMonth();
+			 month = month.length > 1 ? month : '0' + month;
+			
+			var day = d.getDate()-1;
+			day = day.length > 1 ? day : '0' + day;
+			
+			var c = new Date(year+1, month, day);
+			
+			//console.log(c);
+			
+			$('#enddate').val(c.getDate()+'/'+(c.getMonth()+1) +'/'+c.getFullYear());
 		}
 		
 		
