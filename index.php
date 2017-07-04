@@ -174,8 +174,7 @@
 										<td align="right" class="align-right">&nbsp;&nbsp;10,000,000</td>
 									</tr>
 									<tr>
-										<td width="40%">Accidental Permanent Total Disablement
-											(Continental Scale Benefts)</td>
+										<td width="40%">Accidental Permanent Total Disablement</td>
 										<td align="right" class="align-right">750,000</td>
 										<td align="right" class="align-right">1,000,000</td>
 										<td align="right" class="align-right">2,000,000</td>
@@ -195,8 +194,7 @@
 										<td align="right" class="align-right">20,000</td>
 									</tr>
 									<tr>
-										<td width="40%">Accidental Temporary , Total Disablement,
-											(Loss of Income) per week maximum 104 weeks</td>
+										<td width="40%">Accidental Temporary , Total Disablement</td>
 										<td align="right" class="align-right">3,500</td>
 										<td align="right" class="align-right">5,000</td>
 										<td align="right" class="align-right">10,000</td>
@@ -393,7 +391,7 @@
 					<legend>Please lets Know you better</legend>
 					<div class="form-group">
 						<label for="fname2" class="col-lg-4 control-label">First Name*</label>
-						<div class="col-lg-8">
+						<div class="col-lg-4">
 							<input type="text" class="form-control" id="fname2" name="fname2"
 								placeholder="First Name">
 						</div>
@@ -402,7 +400,7 @@
 					<!-- Second Name -->
 					<div class="form-group">
 						<label for="sname" class="col-lg-4 control-label">Second Name</label>
-						<div class="col-xs-4">
+						<div class="col-lg-4">
 							<input type="text" class="form-control" id="sname" name="sname"
 								placeholder="Second name">
 						</div>
@@ -411,7 +409,7 @@
 					<!-- Last Name -->
 					<div class="form-group">
 						<label for="lname" class="col-lg-4 control-label">Last Name*</label>
-						<div class="col-xs-4">
+						<div class="col-lg-4">
 							<input type="text" class="form-control" id="lname" name="lname"
 								placeholder="Last Name">
 						</div>
@@ -420,7 +418,7 @@
 					<!-- ID Numnber -->
 					<div class="form-group">
 						<label for="conf_idNo" class="col-lg-4 control-label">ID/Passport Number*</label>
-						<div class="col-xs-4">							
+						<div class="col-lg-4">							
 							<input type="text" class="form-control" name="idpass" id="idpass" placeholder="ID / Passport Number">
 						</div>
 					</div>
@@ -431,7 +429,7 @@
 						<div class="col-lg-4">
 							
 							<input type="text" class="form-control bfh-phone"
-								name="conf_phone"
+								name="conf_phone2" id="conf_phone2"
 								placeholder="e.g. +254722000000">
 
 						</div>
@@ -462,7 +460,7 @@
 						<label for="dob" class="col-lg-4 control-label">Date of Birth*</label>
 						<div class="col-lg-4">
 						<div class='input-group input-append date' id='dob'>
-							<input type='text' class="form-control" name="custdob"  /> 
+							<input type='text' class="form-control" name="custdob" id="custdob" /> 
 							<span class="input-group-addon add-on"> <span	class="glyphicon glyphicon-calendar"></span></span>							
 						</div>
 						
@@ -553,8 +551,8 @@
 			<!-- Step 5 -->
 			<fieldset id="print-email-quote" class="">
 					<legend>Hurray, You quote is ready.</legend>
-					
-					
+						
+					<?php include 'view/quotePreview.php';?>
 					<div class="form-group">
 						<!-- <label  class="col-lg-4 control-label"></label> -->
 						<div class="col-lg-12">

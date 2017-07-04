@@ -38,10 +38,39 @@ $(document).ready(function(){
 				
 				//return date>element.value;
 				
-				console.log("selected start date is: " +element.value);
-				console.log("todays date= "+date);
+				//console.log("selected start date is: " +element.value);
+				//console.log("todays date= "+date);
 				
 			},'Date must not be earlier than today');
+			
+			//capture the value first captured
+			$.validator.addMethod("assignfirstNameField",function(value,element){
+				$("#fname2").val(element.value);
+				//console.log("Assigned first name "+element.value);
+				return true;
+			}," ");
+			
+			
+			//capture phone number
+			$.validator.addMethod("assignPhoneNo",function(value, element){
+				$('#conf_phone2').val(element.value);
+				//console.log("Assign Phone Number "+element.value);
+				return true;
+			}," ");		
+			
+			//capture Email
+			$.validator.addMethod("assignEmail",function(value, element){
+				$('#email2').val(element.value);
+				//console.log("Email: "+element.value);
+				return true;
+			}, " ");
+			
+			$.validator.addMethod("assignDOB", function(value, element){
+				$("#custdob").val(element.value);
+				//console.log("Assigned DOB "+element.value);
+				return true;
+			}," ")
+			
 
 			$(".next").click(function(){
 				var form = $("#myform");
@@ -61,21 +90,25 @@ $(document).ready(function(){
 							required: true,
 							usernameRegex: true,
 							minlength: 3,
+							assignfirstNameField: true,
 						},
 						
 						custdob1: {
 							required: true,	
-							MinimunDOB: true,														 							
+							MinimunDOB: true,
+							assignDOB : true,
 						},
 						
 						email: {
 							required: true,
 							minlength: 3,
 							email: true,
+							assignEmail : true,
 						},
 						
 						conf_phone:{
 							required: true,
+							assignPhoneNo : true,
 						},
 						
 						coverOption_pa_stdnt:{
@@ -89,7 +122,7 @@ $(document).ready(function(){
 						
 						startdate:{
 							required: true,
-							greaterThan : true,
+							//greaterThan : true,
 						},
 						
 						enddate:{
@@ -160,7 +193,19 @@ $(document).ready(function(){
 						
 						conf_nokemail: {
 							required : true,
-						},						
+						},
+						
+						previus_cover :{
+							required : true,
+						},
+						
+						physical_disability:{
+							required : true,
+						},
+						
+						final_declarations:{
+							required : true,
+						},
 					},
 					messages: {
 						fname: {
@@ -490,9 +535,9 @@ $(document).ready(function(){
 			
 			//alert("1 ");
 			
-			console.log(selected);
-			console.log(strtdate);
-			console.log(enddte);
+			//console.log(selected);
+			//console.log(strtdate);
+			//console.log(enddte);
 			
 			
 			
@@ -593,7 +638,7 @@ $(document).ready(function(){
 		function customerAge() {
 			//alert ("tt"+customerDOB);//customerDOB
 			
-			//
+
 			
 			
 			console.log("customerAge()");
@@ -610,21 +655,31 @@ $(document).ready(function(){
 		
 		function setCoverEndDate(){
 			var startdate=$('#startdate').val();
-			var d =stringToDate(startdate,"dd/MM/yyyy","/");
+			var todaysdate=new Date();
 			
-			var year = d.getFullYear();
 			
-			var month = d.getMonth();
-			 month = month.length > 1 ? month : '0' + month;
+			var _startdate =stringToDate(startdate,"dd/MM/yyyy","/");
 			
-			var day = d.getDate()-1;
-			day = day.length > 1 ? day : '0' + day;
+			//console.log("Start date=: "+_startdate);
+			//console.log("todays date= "+todaysdate);
 			
-			var c = new Date(year+1, month, day);
-			
-			//console.log(c);
-			
-			$('#enddate').val(c.getDate()+'/'+(c.getMonth()+1) +'/'+c.getFullYear());
+			if(_startdate<todaysdate){
+				alert('Cover Start date must not be a past date');				
+				$('#startdate').val(today);
+				
+			}else{
+				
+				var year = _startdate.getFullYear();			
+				var month = _startdate.getMonth();
+				 month = month.length > 1 ? month : '0' + month;
+				
+				var day = _startdate.getDate()-1;
+				day = day.length > 1 ? day : '0' + day;
+				
+				var c = new Date(year+1, month, day);			
+				$('#enddate').val(c.getDate()+'/'+(c.getMonth()+1) +'/'+c.getFullYear());
+			}
+						
 		}
 		
 		
@@ -641,6 +696,8 @@ $(document).ready(function(){
 		            var formatedDate = new Date(dateItems[yearIndex],month,dateItems[dayIndex]);
 		            return formatedDate;
 		}
+		
+		
 
 		function formatedNumber(value){
 			return 'KES '+value.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");

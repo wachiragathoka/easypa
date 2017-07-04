@@ -37,15 +37,71 @@ if (isset ( $_POST ['Submit'] ) && $_POST ['Submit'] == "Get My Quote") {
 	$cover_option_pa_std = $_POST ['coverOption_pa_stdnt']; // select
 	//$cover_option = $_POST ['coverOption']; // radio
 	
-	//Declarations
-	$previus_cover=$_POST['previus_cover'];
-	$previus_cover_name=filter_var ($_POST['previus_cover_name'], FILTER_SANITIZE_STRING );
-	$physical_disability=$_POST['physical_disability'];
-	$physical_disability_names=filter_var($_POST['physical_disability_names'],FILTER_SANITIZE_STRING);
-	$accidents_in_five_years=filter_var($_POST['accidents_in_five_years'], FILTER_SANITIZE_STRING);
-	$excluded_activities=filter_var($_POST['excluded_activities']); //array
-	$excluded_activities_extension=filter_var($_POST['excluded_activities_extension'], FILTER_SANITIZE_STRING);
-	$final_declarations=$_POST['final_declarations'];
+	/**
+	 * Declarations
+	 */
+	if($_POST['previus_cover']!=""){
+		$previus_cover=$_POST['previus_cover'];
+	}else{
+		$previus_cover="N/A";
+	}
+	
+	
+	//previous insurance name
+	if($_POST['previus_cover_name']!=""){
+		$previus_cover_name=filter_var ($_POST['previus_cover_name'], FILTER_SANITIZE_STRING );
+	}else{
+		$previus_cover_name="N/A";
+	}
+	
+	// physical disability
+	if($_POST['physical_disability']!=""){
+		$physical_disability=$_POST['physical_disability'];
+	}else{
+		$physical_disability="N/A";
+	}
+	
+	
+	//Physical disability names
+	if($_POST['physical_disability_names']!=""){
+		$physical_disability_names=filter_var($_POST['physical_disability_names'],FILTER_SANITIZE_STRING);
+	}else{
+		$physical_disability_names="None";
+	}
+	
+	//accidents in five years
+	if($_POST['accidents_in_five_years']!=""){
+		$accidents_in_five_years=filter_var($_POST['accidents_in_five_years'], FILTER_SANITIZE_STRING);
+	}else{
+		$accidents_in_five_years="None";
+	}
+	
+	//Excluded activities
+	if($_POST['excluded_activities']!=""){
+		$excluded_activities="";
+		$ARRAY_excluded_activities=$_POST['excluded_activities']; //array
+		
+		foreach ($ARRAY_excluded_activities as $ex){
+			$excluded_activities=$excluded_activities.",".$ex;
+		}
+	}else{
+		$excluded_activities="None";
+	}
+	
+	//excluded_activities_extension
+	if($_POST['excluded_activities_extension']!=""){
+		$excluded_activities_extension=filter_var($_POST['excluded_activities_extension'], FILTER_SANITIZE_STRING);
+	}else{
+		$excluded_activities_extension="no";
+	}
+	
+	//final declaration
+	if($_POST['final_declarations']){
+		$final_declarations=$_POST['final_declarations'];
+	}else {
+		$final_declarations="no";
+	}
+	
 	
 	//cover Amounts
 	$cover_premium=filter_var ( $_POST['premiumamount'],FILTER_SANITIZE_STRING );
@@ -89,5 +145,5 @@ echo "success";
 //header('location:..');
 }else{
 	
-	echo "Not Submit";
+	echo "No Submit";
 }
