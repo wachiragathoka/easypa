@@ -1,5 +1,5 @@
 <?php 
-
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -115,19 +115,14 @@
 				<fieldset id="company_information" class="">
 					<legend>Your Personal accident Cover </legend>
 
-					<!-- <div class="form-group">
-						<label for="company" class="col-lg-4 control-label">Company</label>
-						<div class="col-lg-8">
-							<input type="text" class="form-control" id="company" name="company" placeholder="Company">
-						</div>
-					</div> -->
 
 					<div class="form-group">
-						<label for="coverOption" class="col-lg-4 control-label">Your cover
-							Option</label>
+						<label for="coverOption_pa_stdnt" class="col-lg-4 control-label">Your
+							cover Option</label>
 						<div class="col-lg-8">
-							<select class="form-control" id="coverOption_pa_stdnt" name="coverOption_pa_stdnt" onchange="paStudentPaView()">
-								<option selected>Choose One...</option>
+							<select class="form-control" id="coverOption_pa_stdnt"
+								name="coverOption_pa_stdnt" onchange="paStudentPaView()">
+								<option>Choose One...</option>
 								<option value="Personal Accident Cover">Personal Accident Cover</option>
 								<option value="Student Accident Cover">Student Accident Cover</option>
 							</select>
@@ -141,14 +136,15 @@
 						</div>
 					</div>-->
 
+					<div class="pa-cover-table" id="pa-cover-table">
 					<div class="form-group">
 						<label for="url" class="col-lg-4 control-label">Select preferred
 							Option</label>
-						<div class="col-xs-8">
+						<div class="col-lg-8">
 
 							<!-- table -->
 
-			<div class="pa-cover-table" id="pa-cover-table">
+			
 							<table class="table table-bordered">
 								<thead class="thead-default">
 									<tr>
@@ -260,77 +256,88 @@
 								</tbody>
 							</table>
 			</div>
+			</div>
+			
+			</div>
 							<!-- personal accident table end -->
-							
-					<div class="student-internship-cover-table" id="student-internship-cover-table">
-					
-					<!-- <div class="form-group">
-						<label for="" class="col-lg-4 control-label">Annual or Semi Annual?</label> 
-						<div class="col-lg-5">-->
-						
-						<!-- <input id="annual" type="radio" name="annualSemiaAnnual" value="annual"><label for="annual"><span><span>Annual</span></span></label><br>
+
+						<div class="student-internship-cover-table"
+							id="student-internship-cover-table">
+
+							<div class="form-group">
+								<label for="" class="col-lg-4 control-label">Annual or Semi
+									Annual?</label>
+								<div class="col-lg-5">
+
+									<!-- <input id="annual" type="radio" name="annualSemiaAnnual" value="annual"><label for="annual"><span><span>Annual</span></span></label><br>
 								<input id="semiannual" type="radio" name="annualSemiaAnnual" value="semiannual"><label for="semiannual"><span><span>Semi Annual</span></span></label> -->
-							<div class="col-lg-8">
-							<select class="form-control" id=annualSemiaAnnual name="annualSemiaAnnual">
-								<option selected>Choose One...</option>
-								<option value="Annual">Annual Cover</option>
-								<option value="Semi Annual">Semi Annual Cover</option>
-							</select> 
-						 </div>
-						 <p>&nbsp;</p>
-					<!-- </div> -->
-					
-					
-						<table class="table table-bordered">
-								<thead class="thead-default">
-									<tr>
-										<th class="th-titles" align="center">Options</th>
-										<th class="th-titles" align="center">Plan A</th>
-										<th class="th-titles" align="center">Plan B</th>
-										<th class="th-titles" align="center">Plan C</th>
-										<th class="th-titles" align="center">Plan D</th>										
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td width="40%" scope="row">Accidental Death</td>
-										<td align="right" class="align-right">200,000</td>
-										<td align="right" class="align-right">250,000</td>
-										<td align="right" class="align-right">300,000</td>
-										<td align="right" class="align-right">400,000</td>										
-									</tr>
-									<tr>
-										<td width="40%" scope="row">Accidental disablement</td>
-										<td align="right" class="align-right">200,000</td>
-										<td align="right" class="align-right">250,000</td>
-										<td align="right" class="align-right">300,000</td>
-										<td align="right" class="align-right">400,000</td>										
-									</tr>
-									<tr>
-										<td width="40%" scope="row">Accidental medical reimbursement</td>
-										<td align="right" class="align-right">20,000</td>
-										<td align="right" class="align-right">25,000</td>
-										<td align="right" class="align-right">30,000</td>
-										<td align="right" class="align-right">40,000</td>										
-									</tr>
-									<tr>
-										<td height="30px" align="center"></td>
-										<td height="30px" align="center"><input id="s_A" type="radio"
-											name="s_coverOption" value="A"><label for="s_A"><span><span></span></span>
-										</label></td>
-										<td height="30px" align="center"><input id="s_B" type="radio"
-											name="s_coverOption" value="B"><label for="s_B"><span><span></span></span>
-										</label></td>
-										<td height="30px" align="center"><input id="s_C" type="radio"
-											name="s_coverOption" value="C"><label for="s_C"><span><span></span></span>
-										</label></td>
-										<td height="30px" align="center"><input id="s_D" type="radio"
-											name="s_coverOption" value="D"><label for="s_D"><span><span></span></span>
-										</label></td>
+									<div class="col-lg-8">
+										<select class="form-control" id=annualSemiaAnnual
+											name="annualSemiaAnnual">
+											<option selected>Choose One...</option>
+											<option value="Annual">Annual Cover</option>
+											<option value="Semi Annual">Semi Annual Cover</option>
+										</select>
+									</div>
+
+								</div>
+								
+								</div>
+					<div class="form-group">
+						<label for="url" class="col-lg-4 control-label">Select preferred
+							Option</label>
+						<div class="col-lg-8">
+
+								<table class="table table-bordered">
+									<thead class="thead-default">
+										<tr>
+											<th class="th-titles" align="center">Options</th>
+											<th class="th-titles" align="center">Plan A</th>
+											<th class="th-titles" align="center">Plan B</th>
+											<th class="th-titles" align="center">Plan C</th>
+											<th class="th-titles" align="center">Plan D</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td width="40%" scope="row">Accidental Death</td>
+											<td align="right" class="align-right">200,000</td>
+											<td align="right" class="align-right">250,000</td>
+											<td align="right" class="align-right">300,000</td>
+											<td align="right" class="align-right">400,000</td>
+										</tr>
+										<tr>
+											<td width="40%" scope="row">Accidental disablement</td>
+											<td align="right" class="align-right">200,000</td>
+											<td align="right" class="align-right">250,000</td>
+											<td align="right" class="align-right">300,000</td>
+											<td align="right" class="align-right">400,000</td>
+										</tr>
+										<tr>
+											<td width="40%" scope="row">Accidental medical reimbursement</td>
+											<td align="right" class="align-right">20,000</td>
+											<td align="right" class="align-right">25,000</td>
+											<td align="right" class="align-right">30,000</td>
+											<td align="right" class="align-right">40,000</td>
+										</tr>
+										<tr>
+											<td height="30px" align="center"></td>
+											<td height="30px" align="center"><input id="s_A" type="radio"
+												name="s_coverOption" value="A"><label for="s_A"><span><span></span></span>
+											</label></td>
+											<td height="30px" align="center"><input id="s_B" type="radio"
+												name="s_coverOption" value="B"><label for="s_B"><span><span></span></span>
+											</label></td>
+											<td height="30px" align="center"><input id="s_C" type="radio"
+												name="s_coverOption" value="C"><label for="s_C"><span><span></span></span>
+											</label></td>
+											<td height="30px" align="center"><input id="s_D" type="radio"
+												name="s_coverOption" value="D"><label for="s_D"><span><span></span></span>
+											</label></td>
 										</tr>
 									</tbody>
-									</table>					
-					</div>
+								</table>
+							</div>
 
 						</div>
 					</div>
@@ -369,11 +376,15 @@
 					</div>
 					
 					<div class="form-group">
-						<label for=" " class="col-lg-4 control-label"></label>
+						<label for="" class="col-lg-4 control-label">&nbsp;</label>
 						<div class="col-lg-8">
-							<p>
-								<a class="btn btn-info" id="stage2">Previous</a> <button type="button" class="btn btn-primary" id="preview-quote" data-toggle="modal" data-target="#myModal">Preview Quote</button> <a class="btn btn-success next">next</a>
-							</p>
+							<table>
+								<tr>
+									<td><a class="btn btn-info" id="stage2">Previous</a></td>
+									<td> <button type="button" class="btn btn-primary" id="preview-quote" data-toggle="modal" data-target="#myModal">Preview Quote</button></td>
+									<td> <a class="btn btn-success next">next</a></td>
+								</tr>
+							</table>
 
 						</div>
 					</div>
@@ -552,13 +563,17 @@
 			<fieldset id="print-email-quote" class="">
 					<legend>Hurray, You quote is ready.</legend>
 						
-					<?php include 'view/quotePreview.php';?>
+					
+					
 					<div class="form-group">
 						<!-- <label  class="col-lg-4 control-label"></label> -->
+						
 						<div class="col-lg-12">
 						
 						<!-- Generate a Quote preview -->
 						
+						<?php include 'views/quotePreview.php';?>
+
 						
 						<!-- End quote -->
 						
