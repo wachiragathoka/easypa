@@ -58,7 +58,7 @@ session_start();
 			<form class="form-horizontal" action="" method="POST" id="myform">
 
 				<!-- Step 1 -->
-				<fieldset id="account_information" class="">
+				<fieldset id="account_information">
 					<legend>Lets Know you first</legend>
 					<div class="form-group">
 						<label for="fname" class="col-lg-4 control-label">First Name*</label>
@@ -83,7 +83,7 @@ session_start();
 					<div class="form-group">
 						<label for="email" class="col-lg-4 control-label">Your Email
 							Address*</label>
-						<div class="col-xs-5">
+						<div class="col-lg-5">
 							<input type="email" class="form-control" id="email" name="email"
 								placeholder="Email">
 						</div>
@@ -91,7 +91,7 @@ session_start();
 					<div class="form-group">
 						<label for="conf_phone" class="col-lg-4 control-label">Your Phone
 							Number*</label>
-						<div class="col-xs-5">
+						<div class="col-lg-5">
 							<!-- <input type="password" class="form-control" id="conf_password" name="conf_password" placeholder="e.g. +254722000000"> -->
 							<input type="text" class="form-control bfh-phone" data-format="+254 (dd) dddddd" name="conf_phone" id="conf_phone" placeholder="e.g. +254722000000" >
 
@@ -112,29 +112,20 @@ session_start();
 
 
 				<!-- Step 2 -->
-				<fieldset id="company_information" class="">
-					<legend>Your Personal accident Cover </legend>
-
-
+				
+				<fieldset id="company_information">
+					<legend>Your Personal Accident Cover </legend>
+			
 					<div class="form-group">
-						<label for="coverOption_pa_stdnt" class="col-lg-4 control-label">Your
-							cover Option</label>
+						<label for="coverOption_pa_stdnt" class="col-lg-4 control-label">Your Cover Option</label>
 						<div class="col-lg-8">
-							<select class="form-control" id="coverOption_pa_stdnt"
-								name="coverOption_pa_stdnt" onchange="paStudentPaView()">
+							<select class="form-control" id="coverOption_pa_stdnt" name="coverOption_pa_stdnt" onchange="paStudentPaView()">
 								<option>Choose One...</option>
 								<option value="Personal Accident Cover">Personal Accident Cover</option>
 								<option value="Student Accident Cover">Student Accident Cover</option>
 							</select>
 						</div>
 					</div>
-
-					<!--  <div class="form-group">
-						<label for="url" class="col-lg-4 control-label">Website url</label>
-						<div class="col-lg-8">
-							<input type="text" class="form-control" id="url" name="url" placeholder="Website url">
-						</div>
-					</div>-->
 
 					<div class="pa-cover-table" id="pa-cover-table">
 					<div class="form-group">
@@ -144,7 +135,6 @@ session_start();
 
 							<!-- table -->
 
-			
 							<table class="table table-bordered">
 								<thead class="thead-default">
 									<tr>
@@ -265,12 +255,8 @@ session_start();
 							id="student-internship-cover-table">
 
 							<div class="form-group">
-								<label for="" class="col-lg-4 control-label">Annual or Semi
-									Annual?</label>
-								<div class="col-lg-5">
-
-									<!-- <input id="annual" type="radio" name="annualSemiaAnnual" value="annual"><label for="annual"><span><span>Annual</span></span></label><br>
-								<input id="semiannual" type="radio" name="annualSemiaAnnual" value="semiannual"><label for="semiannual"><span><span>Semi Annual</span></span></label> -->
+								<label for="" class="col-lg-4 control-label">Annual or Semi Annual?</label>
+									
 									<div class="col-lg-8">
 										<select class="form-control" id=annualSemiaAnnual
 											name="annualSemiaAnnual">
@@ -279,9 +265,6 @@ session_start();
 											<option value="Semi Annual">Semi Annual Cover</option>
 										</select>
 									</div>
-
-								</div>
-								
 								</div>
 					<div class="form-group">
 						<label for="url" class="col-lg-4 control-label">Select preferred
@@ -373,7 +356,8 @@ session_start();
 							</div>
 						</div>
 					</div>
-					</div>
+					
+					
 					
 					<div class="form-group">
 						<label for="" class="col-lg-4 control-label">&nbsp;</label>
@@ -388,7 +372,7 @@ session_start();
 
 						</div>
 					</div>
-					
+					</div>
 					<!-- <p>
 						<a class="btn btn-primary next">next</a>
 					</p> -->
@@ -398,7 +382,7 @@ session_start();
 
 
 				<!-- Step 3 -->
-				<fieldset id="personal_information" class="">
+				<fieldset id="personal_information">
 					<legend>Please lets Know you better</legend>
 					<div class="form-group">
 						<label for="fname2" class="col-lg-4 control-label">First Name*</label>
@@ -578,7 +562,7 @@ session_start();
 						<!-- End quote -->
 						
 							<p>
-								<!-- <a class="btn btn-success">Print and Email my quote</a>  --><a class="btn btn-primary next" href="./PDFQuote.php">Print my Quote</a> <a class="btn btn-info">Email My Quote</a>
+								<!-- <a class="btn btn-success">Print and Email my quote</a>  --><a class="btn btn-primary next" href="./PDFQuote.php">Print my Quote</a> <!-- <a class="btn btn-info">Email My Quote</a> -->
 							</p>
 
 						</div>

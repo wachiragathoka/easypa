@@ -5,7 +5,7 @@ $(document).ready(function(){
 
 			// Custom method to validate username
 			$.validator.addMethod("usernameRegex", function(value, element) {
-				return this.optional(element) || /^[a-zA-Z0-9]*$/i.test(value);
+				return this.optional(element) || /^[a-zA-Z0-9]*$/i.test($.trim(value));
 			}, "Username must contain only letters, numbers");
 			
 			//validate date of birth
