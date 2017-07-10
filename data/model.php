@@ -442,13 +442,13 @@ class Model{
 	function  getdeclarationQuestions($quote_Id){
 		return array(
 				"Declaration",
-				"Have you previously held Personal Accident cover ?",
+				"Previously held Personal Accident cover ?",
 				"If yes , name the insurer:",
-				"Are you free from any physical disability or mental illness to the best of your knowledge ?",
+				"Physical disability or Mental illness?",
 				"If No above, give details:",
-				"Give details of all accidents you have sustained in the last five (5) years :",
-				"Are you engaged in any of the excluded activities or occupations",
-				"If Yes, would you like an extension of cover to these activities(Extra 25% of the basic premium )"
+				"Details of accidents sustained in the last five (5) years :",
+				"Engagement in any of the excluded activities or occupations",
+				"Extension of cover for excluded activities(Extra 25% of the basic premium )"
 		);
 	}
 	

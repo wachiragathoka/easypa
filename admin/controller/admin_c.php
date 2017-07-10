@@ -1,5 +1,5 @@
 <?php
-include 'admin/model/admin_model.php';
+//include '../model/admin_model.php';
 
 class Admin_C{
 	var $datasource="";
@@ -8,6 +8,10 @@ class Admin_C{
 	}
 	
 	function getAllPolicies(){
-		$this->datasource->getAllPolicies();
+		return $this->datasource->getAllPolicies();
+	}
+	
+	function getPolicy($quote_ID){
+		return $this->datasource->getPolicy($quote_ID);
 	}
 }

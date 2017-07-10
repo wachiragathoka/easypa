@@ -306,7 +306,7 @@ $pdf->subHeadingCell("COVER DETAILS",10,92);
 
 //Cover Details
 $datasource2=new Model();
-$CoverSubheading=array("Premium Amount (KES)","Cover Option:","Cover Start on:", "Cover ends on:");
+$CoverSubheading=array("Premium (KES)","Cover Option:","Cover Start on:", "Cover ends on:");
 $coverdetails=$datasource2->getPolicyDetails($_SESSION['quote_Id']);
 $pdf->tableData($CoverSubheading,$coverdetails,10,99);
 
