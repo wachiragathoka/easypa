@@ -32,7 +32,7 @@ $saleslist=$policy_datasources->getAllPolicies();
 			<div class=col-lg-1 data-cell>".$saleslist[$i]['cover_startdate']."</div>
 			<div class=col-lg-1 data-cell>".$saleslist[$i]['cover_startdate']."</div>
 			<div class=col-lg-1 data-cell>Not Paid</div>
-			<div class=col-lg-1 data-cell><a href=policy_view.php?p_id=".$saleslist[$i]['quote_id']." class=btn btn-primary>View</a></div>
+			<div class=col-lg-1 data-cell><a target=_blank href=policy_view.php?p_id=".$saleslist[$i]['quote_id']." class=btn btn-primary>View</a></div>
 		</div>";	
 	}
 	
