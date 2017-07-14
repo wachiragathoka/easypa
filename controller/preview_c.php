@@ -8,7 +8,12 @@ include 'data/model.php';
  	} 	
  	
  	function getCustomerdata($quote_Id){
- 		return $this->model->getCustomerdata($quote_Id);
+ 		//var_dump($quote_Id);
+ 		//var_dump($this->model);
+ 		
+ 		//
+ 		//var_dump($this->model->getCustomerdata($quote_Id));
+ 		return $this->model->getCustomerdataPreview($quote_Id);
  	}
  	
  	function getPolicyDetails( $quote_Id){//$_SESSION ['quote_Id']

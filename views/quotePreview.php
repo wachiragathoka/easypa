@@ -7,6 +7,11 @@ $customerData=$cust_dataSource->getCustomerdata($_SESSION ['quote_Id']);
 
 $policy_dataSource= new Preview_C();
 $policyData=$policy_dataSource->getPolicyDetails($_SESSION ['quote_Id']);
+
+//var_dump($customerData);
+//var_dump($policyData);
+//var_dump($_SESSION ['quote_Id']);
+
 ?>
 	<!-- <div class="row">
 		<div class="col-lg-12 ">

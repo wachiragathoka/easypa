@@ -6,7 +6,7 @@ $model = new Model ();
 
 if (isset ( $_POST ['Submit'] ) && $_POST ['Submit'] == "Get My Quote") {
 	
-	$_SESSION['quote_Id']= md5(time().rand(10,100));
+	//$_SESSION['quote_Id']= md5(time().rand(10,100));
 	
 	if(isset($_POST['coverOption_pa_stdnt']) && $_POST['coverOption_pa_stdnt']=="Student Accident Cover"){
 		$s_annualSemiaAnnual=filter_var ($_POST['annualSemiaAnnual'], FILTER_SANITIZE_STRING); //return annual and semiannual
@@ -18,7 +18,7 @@ if (isset ( $_POST ['Submit'] ) && $_POST ['Submit'] == "Get My Quote") {
 		$s_annualSemiaAnnual="NA";
 	}
 	
-	
+	//$quote_Id=
 	$cust_firstname = filter_var ( $_POST ['fname'], FILTER_SANITIZE_STRING );
 	$cust_second_name = filter_var ( $_POST ['sname'], FILTER_SANITIZE_STRING );
 	$cust_last_name = filter_var ( $_POST ['lname'], FILTER_SANITIZE_STRING );
@@ -110,7 +110,7 @@ if (isset ( $_POST ['Submit'] ) && $_POST ['Submit'] == "Get My Quote") {
 	$cover_startdate = filter_var ( $_POST ['startdate'],FILTER_SANITIZE_STRING );
 	$cover_enddate = filter_var ( $_POST ['enddate'],FILTER_SANITIZE_STRING );
 	
-	$model->insertPolicydata ( 
+	if($model->insertPolicydata ( 
 			$_SESSION['quote_Id'],
 			$cust_firstname, 
 			$cust_second_name, 
@@ -140,8 +140,12 @@ if (isset ( $_POST ['Submit'] ) && $_POST ['Submit'] == "Get My Quote") {
 			$s_annualSemiaAnnual,
 			$cover_startdate, 
 			$cover_enddate 
-		);
-echo "success";
+		)){
+			echo "success";
+	}else{
+		echo "Error Inserting to Database";
+	}
+
 //header('location:..');
 }else{
 	
