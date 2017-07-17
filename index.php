@@ -541,8 +541,7 @@ $_SESSION['quote_Id']= md5(time().rand(10,100));
 			<!-- Print and Email -->
 			<!-- Step 5 -->
 			<fieldset id="print-email-quote" class="">
-					<legend>Hurray, You quote is ready.</legend>
-						
+					<legend>Hurray, You quote is ready.</legend>		
 					
 					
 					<div class="form-group">

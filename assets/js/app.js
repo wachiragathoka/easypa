@@ -149,6 +149,7 @@ $(document).ready(function(){
 						
 						s_coverOption : {
 							required : true,
+							setPremiumAmount : true,
 						},
 						
 						fname2: {
