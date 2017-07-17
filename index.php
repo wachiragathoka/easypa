@@ -108,12 +108,9 @@ $_SESSION['quote_Id']= md5(time().rand(10,100));
 
 						</div>
 					</div>
-
 				</fieldset>
-
-
-				<!-- Step 2 -->
 				
+				<!-- Step 2 -->				
 				<fieldset id="company_information">
 					<legend>Your Personal Accident Cover </legend>
 			
@@ -534,9 +531,7 @@ $_SESSION['quote_Id']= md5(time().rand(10,100));
 
 						</div>
 					</div>
-				</fieldset>
-
-			
+				</fieldset>			
 			
 
 				<!-- Step 4 -->
@@ -557,7 +552,9 @@ $_SESSION['quote_Id']= md5(time().rand(10,100));
 						
 						<!-- Generate a Quote preview -->
 						
-						<?php include 'views/quotePreview.php';?>
+						<?php 
+						//usleep(5);
+						//include 'views/quotePreview.php';?>
 
 						
 						<!-- End quote -->

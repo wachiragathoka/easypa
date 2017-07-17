@@ -1,3 +1,3 @@
 <?php 
-class prel
+//class prel
 ?>

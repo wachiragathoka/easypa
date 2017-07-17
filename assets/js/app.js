@@ -69,7 +69,12 @@ $(document).ready(function(){
 				$("#custdob").val(element.value);
 				//console.log("Assigned DOB "+element.value);
 				return true;
-			}," ")
+			}," ");
+			
+			$.validator.addMethod("setPremiumAmount",function(value, element){
+				myModalData();
+				return true;
+			}," ");
 			
 
 			$(".next").click(function(){
@@ -139,6 +144,7 @@ $(document).ready(function(){
 						
 						coverOption: {
 							required : true,
+							setPremiumAmount : true,
 						},
 						
 						s_coverOption : {
@@ -619,6 +625,7 @@ $(document).ready(function(){
 
 			}
 			
+			console.log(premiumAmount);
 
 			
 			$("#exampleModalLabel").html(selected);

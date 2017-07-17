@@ -110,44 +110,21 @@ if (isset ( $_POST ['Submit'] ) && $_POST ['Submit'] == "Get My Quote") {
 	$cover_startdate = filter_var ( $_POST ['startdate'],FILTER_SANITIZE_STRING );
 	$cover_enddate = filter_var ( $_POST ['enddate'],FILTER_SANITIZE_STRING );
 	
-	if($model->insertPolicydata ( 
-			$_SESSION['quote_Id'],
-			$cust_firstname, 
-			$cust_second_name, 
-			$cust_last_name, 
-			$cust_email, 
-			$cust_id_no, 
-			$cust_kra_pin, 
-			$cust_phone_no, 
-			$cust_dob, 
-			$cust_postaladdress, 
-			$cust_postalCode, 
-			$nok_name, 
-			$nok_relationship, 
-			$nok_phone_no, 
-			$nok_email, 
-			$cover_option_pa_std, 
-			$cover_option, 
-			$previus_cover,
-			$previus_cover_name,
-			$physical_disability,
-			$physical_disability_names,
-			$accidents_in_five_years,
-			$excluded_activities,
-			$excluded_activities_extension,
-			$final_declarations,			
-			$cover_premium, 
-			$s_annualSemiaAnnual,
-			$cover_startdate, 
-			$cover_enddate 
+	if($model->insertPolicydata ($_SESSION['quote_Id'],	$cust_firstname, $cust_second_name, $cust_last_name, $cust_email, $cust_id_no, 	$cust_kra_pin, 
+									$cust_phone_no, $cust_dob, $cust_postaladdress, $cust_postalCode, $nok_name, $nok_relationship, $nok_phone_no, $nok_email, $cover_option_pa_std, 
+									$cover_option, $previus_cover, $previus_cover_name, $physical_disability, $physical_disability_names,$accidents_in_five_years,$excluded_activities,
+									$excluded_activities_extension, $final_declarations,$cover_premium, $s_annualSemiaAnnual,$cover_startdate, $cover_enddate 
 		)){
 			echo "success";
+			
+			shell_exec(constant("PHP_PATH")." ../emailQuote.php >> C:\wamp\logs\easypa_log.log &1");
+			
 	}else{
 		echo "Error Inserting to Database";
 	}
-
 //header('location:..');
 }else{
-	
 	echo "No Submit";
 }
+
+	//include '../emailQuote.php';

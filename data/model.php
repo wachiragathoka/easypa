@@ -237,7 +237,7 @@ class Model{
 		$cust_querySTMT->execute();
 		
 		//var_dump($param_Quote_Id);
-		var_dump($cust_querySTMT->rowCount());
+		//var_dump($cust_querySTMT->rowCount());
 		
 		if ($cust_querySTMT->rowCount() > 0){
 			
@@ -245,7 +245,7 @@ class Model{
 			
 			$customerdataAssoc=$cust_querySTMT->fetchAll(PDO::FETCH_ASSOC);
 			
-			var_dump($customerdataAssoc);
+			//var_dump($customerdataAssoc);
 			
 			$cust_firstname=$customerdataAssoc[0]['cust_firstname'];
 			$cust_second_name=$customerdataAssoc[0]['cust_second_name'];

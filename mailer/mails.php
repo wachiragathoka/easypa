@@ -1,4 +1,18 @@
 <?php 
+class SendMail{
+	
+	function __construct(){
+		
+	}
+	
+	
+	function sendEmail(){
+		
+	}
+}
+
+
+
 $to = "mgathoka@uap-group.com";
 $from = "easyDirect@uap-group.com";
 $subject = "Personal Accident Cover Quote";

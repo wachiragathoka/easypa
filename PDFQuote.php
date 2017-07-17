@@ -1,6 +1,5 @@
 <?php
 include 'config/config.php';
-//include_once '../../library/quotePDFFactory.php';
 require 'lib/fpdf/fpdf.php';
 require 'lib/fpdf/gradients.php';
 include_once 'data/model.php';
