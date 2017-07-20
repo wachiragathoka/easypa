@@ -138,7 +138,6 @@
 										</label>* I agree to accept a policy in the company&#39;s usual form for
 								this class of insurance
 								
-								
 							</td>
 							
 							</tr>
