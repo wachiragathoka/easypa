@@ -56,6 +56,7 @@ class Model{
 			$param_excluded_activities_extension,
 			$param_final_declarations,			
 			$param_cover_premium,
+			$param_excludedActivityExtensionAmount,
 			$param_s_annualSemiaAnnual,
 			$param_cover_startdate,
 			$param_cover_enddate){
@@ -93,6 +94,7 @@ class Model{
 										excluded_activities_extension,
 										final_declarations,
 										cover_premium,
+										excludedActivityExtensionAmount,
 										s_annualSemiaAnnual,
 										cover_startdate,
 										cover_enddate
@@ -123,7 +125,8 @@ class Model{
 								:excluded_activities,
 								:excluded_activities_extension,
 								:final_declarations,
-								:cover_premium, 
+								:cover_premium,
+								:excludedActivityExtensionAmount,
 								:s_annualSemiaAnnual, 
 								:cover_startdate, 
 								:cover_enddate)"
@@ -157,6 +160,7 @@ class Model{
 				$clientstmt->bindParam(':final_declarations', $final_declarations);
 				
 				$clientstmt->bindParam(':cover_premium', $cover_premium);
+				$clientstmt->bindParam(':excludedActivityExtensionAmount', $excludedActivityExtensionAmount);
 				$clientstmt->bindParam(':s_annualSemiaAnnual', $s_annualSemiaAnnual);
 				$clientstmt->bindParam(':cover_startdate', $cover_startdate);
 				$clientstmt->bindParam(':cover_enddate', $cover_enddate);
@@ -190,6 +194,7 @@ class Model{
 				$final_declarations=$param_final_declarations;
 				
 				$cover_premium=$param_cover_premium;
+				$excludedActivityExtensionAmount=$param_excludedActivityExtensionAmount;
 				$s_annualSemiaAnnual=$param_s_annualSemiaAnnual;
 				$cover_startdate=$param_cover_startdate;
 				$cover_enddate=$param_cover_enddate;
@@ -379,6 +384,7 @@ class Model{
 					cover_option_pa_std,
 					cover_option,
 				 	cover_premium,
+					excludedActivityExtensionAmount,
 					s_annualSemiaAnnual,
 					cover_startdate,
 					cover_enddate
@@ -399,7 +405,7 @@ class Model{
 			
 			$cover_option_pa_std=$PolicyDetail_ASSOC[0]['cover_option_pa_std'];
 			$cover_option=$PolicyDetail_ASSOC[0]['cover_option'];
-			$cover_premium=$PolicyDetail_ASSOC[0]['cover_premium'];
+			$cover_premium=($PolicyDetail_ASSOC[0]['cover_premium']+$PolicyDetail_ASSOC[0]['excludedActivityExtensionAmount']);
 			$s_annualSemiaAnnual=$PolicyDetail_ASSOC[0]['s_annualSemiaAnnual'];
 			$cover_startdate=$PolicyDetail_ASSOC[0]['cover_startdate'];
 			$cover_enddate=$PolicyDetail_ASSOC[0]['cover_enddate'];

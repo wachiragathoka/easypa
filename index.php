@@ -1,6 +1,5 @@
 <?php 
 session_start();
-$_SESSION['quote_Id']= md5(time().rand(10,100));
 ?>
 <!DOCTYPE html>
 <html lang="en">

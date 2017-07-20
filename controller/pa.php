@@ -7,6 +7,7 @@ $model = new Model ();
 if (isset ( $_POST ['Submit'] ) && $_POST ['Submit'] == "Get My Quote") {
 	
 	//$_SESSION['quote_Id']= md5(time().rand(10,100));
+	$_SESSION['quote_Id']= md5(time().rand(10,100));
 	
 	if(isset($_POST['coverOption_pa_stdnt']) && $_POST['coverOption_pa_stdnt']=="Student Accident Cover"){
 		$s_annualSemiaAnnual=filter_var ($_POST['annualSemiaAnnual'], FILTER_SANITIZE_STRING); //return annual and semiannual
@@ -106,6 +107,13 @@ if (isset ( $_POST ['Submit'] ) && $_POST ['Submit'] == "Get My Quote") {
 	//cover Amounts
 	$cover_premium=filter_var ( $_POST['premiumamount'],FILTER_SANITIZE_STRING );
 	
+	
+	if(isset($_POST['excludedActivityExtensionAmount']) && $_POST['excludedActivityExtensionAmount']>0){
+		$excludedActivityExtensionAmount= $_POST['excludedActivityExtensionAmount'];
+	}else{
+		$excludedActivityExtensionAmount=0;
+	}
+	
 	//cover dates
 	$cover_startdate = filter_var ( $_POST ['startdate'],FILTER_SANITIZE_STRING );
 	$cover_enddate = filter_var ( $_POST ['enddate'],FILTER_SANITIZE_STRING );
@@ -113,7 +121,7 @@ if (isset ( $_POST ['Submit'] ) && $_POST ['Submit'] == "Get My Quote") {
 	if($model->insertPolicydata ($_SESSION['quote_Id'],	$cust_firstname, $cust_second_name, $cust_last_name, $cust_email, $cust_id_no, 	$cust_kra_pin, 
 									$cust_phone_no, $cust_dob, $cust_postaladdress, $cust_postalCode, $nok_name, $nok_relationship, $nok_phone_no, $nok_email, $cover_option_pa_std, 
 									$cover_option, $previus_cover, $previus_cover_name, $physical_disability, $physical_disability_names,$accidents_in_five_years,$excluded_activities,
-									$excluded_activities_extension, $final_declarations,$cover_premium, $s_annualSemiaAnnual,$cover_startdate, $cover_enddate 
+			$excluded_activities_extension, $final_declarations,$cover_premium, $excludedActivityExtensionAmount,$s_annualSemiaAnnual,$cover_startdate, $cover_enddate 
 		)){
 			echo "success";
 			

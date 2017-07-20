@@ -67,7 +67,7 @@
 						<tr>
 							<td>4(b) If Yes, would you like an extension of cover to these
 								activities ?*</td>
-							<td><select name="excluded_activities_extension" id="excluded_activities_extension" class="form-control">
+							<td><select name="excluded_activities_extension" id="excluded_activities_extension" class="form-control" onchange="excludedActiviyextension()">
 									<option value="">Select One</option>
 									<option value="yes">Yes</option>
 									<option value="no">No</option>									
@@ -80,6 +80,40 @@
 
 		</div>
 	</fieldset>
+	
+	<!-- Premium addition Dialog -->
+	<div class="modal fade" id="AddedPremiumAmountModal" tabindex="-1" role="dialog"
+				aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal-dialog" role="document">
+
+					<!-- Modal content-->
+					<div class="modal-content">
+						<div class="modal-header w3-teal">
+							<h5 class="modal-title" id="addititionalAmountLabel">Your Current Premium</h5>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+
+						</div>
+						<div class="modal-body">
+							<table class="table table-striped">
+								<thead>
+									<tr>
+										<th><div id=AddedPremiumAmount></div> </th>									
+									</tr>
+								</thead>
+							</table>
+							</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-primary" data-dismiss="modal">Modify</button>
+							<button type="button" class="btn btn-sucess" data-dismiss="modal">Ok Proceed</button>
+							 
+						</div>
+					</div>					
+				</div>
+			</div>
+<!-- end Dialog -->
 
 	<fieldset id="final-declarations" class="">
 		<legend>Final Declarations</legend>
@@ -112,8 +146,9 @@
 					</tbody>
 				</table>
 				
-				<input type="hidden" name="premiumamount" value=""
-					id="premiumamount">
+				<input type="hidden" name="premiumamount" value="" id="premiumamount">
+				<input type="hidden" name="excludedActivityExtensionAmount" value="" id="excludedActivityExtensionAmount">
+					
 				<p><br><br>
 				
 					<a class="btn btn-primary" id="to-personal-info">previous</a> <input

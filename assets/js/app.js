@@ -550,7 +550,7 @@ $(document).ready(function(){
 			
 			if(selected=="Personal Accident Cover" ){//&& customerAge()=="normal"
 				var selectedOption=$('input[name=coverOption]:checked').val();
-				console.log(selectedOption);
+				//console.log(selectedOption);
 				
 				customerAge();
 				if(selectedOption=="A"){
@@ -626,7 +626,7 @@ $(document).ready(function(){
 
 			}
 			
-			console.log(premiumAmount);
+			//console.log(premiumAmount);
 
 			
 			$("#exampleModalLabel").html(selected);
@@ -649,7 +649,7 @@ $(document).ready(function(){
 
 			
 			
-			console.log("customerAge()");
+			//console.log("customerAge()");
 			//if(customerDOB>=18 && customerDOB<=50){
 				//alert ("normal");
 				//return "normal";
@@ -712,6 +712,30 @@ $(document).ready(function(){
 		}
 		
 		function increasePremiumby25() {
-			alert("Hi");
-			console.log("Hi");
+			//alert("Hi");
+			//console.log("Hi");
+		}
+		
+		
+		/**
+		 * 
+		 * @returns
+		 */
+		
+		function excludedActiviyextension() {
+			var currentAmount=$("#premiumamount").val();			
+			
+			if($('#excluded_activities_extension').val()=="yes"){
+				
+				var excludedActivityExtensionAmount=currentAmount*0.25;
+				
+				$("#excludedActivityExtensionAmount").val(excludedActivityExtensionAmount);
+				$("#AddedPremiumAmount").html("Your new Premium amount is: <b>"+formatedNumber(currentAmount+excludedActivityExtensionAmount)+"</b>");
+				$('#AddedPremiumAmountModal').modal();
+				
+			}else if($('#excluded_activities_extension').val()=="no"){
+				$("#excludedActivityExtensionAmount").val(0);
+				$("#AddedPremiumAmount").html("Your Premium remains as amount is: <b>"+formatedNumber(currentAmount)+"</b>");				
+				//$('#AddedPremiumAmountModal').modal();
+			}			
 		}
